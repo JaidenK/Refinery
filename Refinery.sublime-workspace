@@ -1,0 +1,908 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Ve",
+				"Vector3"
+			],
+			[
+				"Vert",
+				"VertexColor"
+			],
+			[
+				"Tx",
+				"TextId"
+			],
+			[
+				"M",
+				"MID"
+			],
+			[
+				"Atta",
+				"AttachmentForward"
+			],
+			[
+				"Chara",
+				"Character"
+			],
+			[
+				"ha",
+				"handle"
+			],
+			[
+				"Ch",
+				"Character"
+			],
+			[
+				"Bod",
+				"BodyPart"
+			],
+			[
+				"Charac",
+				"CharacterMesh"
+			],
+			[
+				"Cha",
+				"CharacterMesh"
+			],
+			[
+				"Out",
+				"Outfit"
+			],
+			[
+				"for",
+				"for	for i=1,10"
+			],
+			[
+				"Ou",
+				"Outfit"
+			],
+			[
+				"Pants",
+				"PantsTemplate"
+			],
+			[
+				"Right",
+				"RightLegColor"
+			],
+			[
+				"Rig",
+				"RightArmColor"
+			],
+			[
+				"Left",
+				"LeftArmColor"
+			],
+			[
+				"Hea",
+				"HeadColor"
+			],
+			[
+				"Body",
+				"BodyColors"
+			],
+			[
+				"Sess",
+				"sessionData"
+			],
+			[
+				"lo",
+				"localSessionData"
+			],
+			[
+				"get",
+				"getHSB"
+			],
+			[
+				"upd",
+				"updateSelection"
+			],
+			[
+				"new",
+				"newImage"
+			],
+			[
+				"prin",
+				"printDieResult"
+			],
+			[
+				"up",
+				"update_state"
+			],
+			[
+				"Sav",
+				"SavedOutfits"
+			],
+			[
+				"fun",
+				"function	function"
+			],
+			[
+				"in",
+				"InvokeServer"
+			],
+			[
+				"Mesh",
+				"MeshId"
+			],
+			[
+				"bo",
+				"BodyPart"
+			],
+			[
+				"Boy",
+				"BodyPart"
+			],
+			[
+				"Fra",
+				"Frame"
+			],
+			[
+				"else",
+				"elseif"
+			],
+			[
+				"De",
+				"Destroy"
+			],
+			[
+				"Ge",
+				"GetService"
+			],
+			[
+				"Fram",
+				"Frame3"
+			],
+			[
+				"Mou",
+				"MouseButton1Click"
+			],
+			[
+				"fram",
+				"Frame3"
+			],
+			[
+				"pa",
+				"packageDebounce"
+			],
+			[
+				"Aset",
+				"AssetTypeFilter"
+			],
+			[
+				"As",
+				"AssetTypeFilter"
+			],
+			[
+				"Drop",
+				"DropDownMenuButton"
+			],
+			[
+				"UD",
+				"UDim2"
+			],
+			[
+				"drop",
+				"dropDownList"
+			],
+			[
+				"Des",
+				"DestroyRequest"
+			],
+			[
+				"Ass",
+				"AssetID"
+			],
+			[
+				"Hat",
+				"HatRequest"
+			],
+			[
+				"imag",
+				"imageWidth"
+			],
+			[
+				"win",
+				"windowWidth"
+			],
+			[
+				"f",
+				"forp	for k,v in pairs()"
+			],
+			[
+				"pin",
+				"pinData"
+			],
+			[
+				"sess",
+				"sessionData"
+			],
+			[
+				"Tex",
+				"TextLabel"
+			],
+			[
+				"Pl",
+				"PlayerData"
+			],
+			[
+				"Pla",
+				"PlayerData"
+			],
+			[
+				"Mo",
+				"MouseButton1Click"
+			],
+			[
+				"un",
+				"unequipHat"
+			],
+			[
+				"Get",
+				"GetChildren"
+			],
+			[
+				"eq",
+				"equippedHats"
+			],
+			[
+				"e",
+				"equippedHats"
+			],
+			[
+				"width",
+				"width2"
+			],
+			[
+				"wid",
+				"width2"
+			],
+			[
+				"page",
+				"pageNum"
+			],
+			[
+				"sear",
+				"searchPhrase"
+			],
+			[
+				"tot",
+				"totalPages"
+			],
+			[
+				"tab",
+				"table.sort	table.sort"
+			],
+			[
+				"i",
+				"isFullscreen"
+			],
+			[
+				"Cata",
+				"Catalog"
+			],
+			[
+				"js",
+				"json_decode"
+			],
+			[
+				"MO",
+				"MOTDURL"
+			],
+			[
+				"po",
+				"pollID"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"open",
+				"openBanList"
+			],
+			[
+				"ope",
+				"openBanList"
+			],
+			[
+				"refre",
+				"refreshBanList"
+			],
+			[
+				"kickNa",
+				"kickNameInput"
+			],
+			[
+				"banList",
+				"banListLink"
+			],
+			[
+				"banl",
+				"banListLink"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"to",
+				"totalSubmits"
+			],
+			[
+				"LOG",
+				"LOG_CHAT_URL"
+			],
+			[
+				"play",
+				"playerNames"
+			],
+			[
+				"R",
+				"REMOVE_KICK_URL"
+			],
+			[
+				"Wai",
+				"waitForInput"
+			],
+			[
+				"Ac",
+				"action"
+			],
+			[
+				"wait",
+				"waitForInput"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"sp",
+				"spawnParts"
+			],
+			[
+				"wa",
+				"wait"
+			],
+			[
+				"wai",
+				"waitForInput"
+			],
+			[
+				"cam",
+				"camVel"
+			],
+			[
+				"pr",
+				"printArray"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"clo",
+				"closestMate2"
+			],
+			[
+				"Att",
+				"AttackPower"
+			],
+			[
+				"setAt",
+				"setAttackPower"
+			],
+			[
+				"el",
+				"elseif"
+			],
+			[
+				"walk",
+				"walkTowardsRival"
+			],
+			[
+				"set",
+				"setActionFrequency"
+			],
+			[
+				"stage",
+				"stageLength"
+			],
+			[
+				"org",
+				"organisms"
+			],
+			[
+				"hei",
+				"heightmap"
+			],
+			[
+				"Set",
+				"SETTINGS_MENU_LANGUAGE"
+			],
+			[
+				"bor",
+				"borderTop"
+			],
+			[
+				"S",
+				"Size"
+			],
+			[
+				"Wa",
+				"waitForClick"
+			],
+			[
+				"num",
+				"numToAlpha"
+			],
+			[
+				"background-",
+				"background-image"
+			],
+			[
+				"sub",
+				"submit"
+			],
+			[
+				"can",
+				"cancelKick"
+			],
+			[
+				"ki",
+				"kickMenu"
+			],
+			[
+				"JS",
+				"JSONDecode"
+			],
+			[
+				"Ser",
+				"ServerCheckBox"
+			],
+			[
+				"server",
+				"serverIdLabel"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"tex",
+				"textboxInput"
+			],
+			[
+				"Userna",
+				"Usernames"
+			],
+			[
+				"User",
+				"UsernamesInput"
+			],
+			[
+				"vie",
+				"viewClean"
+			],
+			[
+				"Clean",
+				"CleanMessagesCheckBox"
+			],
+			[
+				"Mov",
+				"MovementGui"
+			],
+			[
+				"Mouse",
+				"MouseConn"
+			],
+			[
+				"mo",
+				"modelType"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ssc",
+				"Set Syntax: C"
+			],
+			[
+				"ssja",
+				"Set Syntax: Java"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/index.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/LocalScripts/OutfitsLocal.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/StatsModule.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/ServerScripts/TutorialServer.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/ServerScripts/Panopticon.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/ServerScripts/AntiHackModule.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/ServerScripts/MOTDModule.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/ServerScripts/AdminModule.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/ServerScripts/PinsServer.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/LocalScripts/HSBPicker.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/LocalScripts/GuiManager.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/PinsServer.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/Panopticon.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/PlayerData.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/GuiManager.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/HSBPicker.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/OutfitsLocal.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/CatalogLocal.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/CatalogModule.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/AuraScript.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/GoDaddy/index.html",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/ClearChatLog.MySql",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/outfit.php",
+		"/Users/jaidenking/Documents/Roblox/Blackjack/Blackjack.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/badwords.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/TutorialServer.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/package.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/CompileAssets.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/error_log",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/Assets2.json",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/CompileAssets2.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/php.ini",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/debugging.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/RemoteDoorDemoServer.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/RemoteDoorDemoLocal.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/RemoteDoorDemo.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/PinsLocal.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/pollID.txt",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/motd.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/AntiHackModule.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/AdminModule.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/NoResponseTest.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/sleep.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/GoDaddy/about_BigBrother.html",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/GoDaddy/stylesheet.css",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/GoDaddy/news.html",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/viewBans.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/viewData.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/stylesheet.css",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/TutorialLocal.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/TutorialScript.lua",
+		"/Users/jaidenking/Desktop/catalogheaven.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/MOTDModule.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/CatalogLocal",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/Assets.json",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/vote.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/logMessages.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/logMessages copy.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/MOTDBuilder.lua",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/views/sorter_images/index.json.jbuilder",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/views/sorter_images/show.json.jbuilder",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/controllers/sorter_images_controller.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/views/sorter_images/_form.html.erb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/assets/stylesheets/sorter.scss",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/views/sorter/index.html.erb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/controllers/sorter_controller.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/views/sorter_images/index.html.erb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/views/layouts/application.html.erb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/db/migrate/20160206043031_make_name_string.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/config/routes.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/db/migrate/20160206041952_make_link_string.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/db/migrate/20160206042025_make_link_string2.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/db/migrate/20160206035443_make_index_autoincrement.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/db/migrate/20160206035059_add_name_to_sorter_images.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/db/migrate/20160206033938_create_sorter_images.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/views/sorter_images/new.html.erb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/db/migrate/20160205045345_create_users.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/views/welcome/index.html.erb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/config/database.yml",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/controllers/welcome_controller.rb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/views/welcome/sample.html.erb",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/Gemfile",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/assets/stylesheets/application.css.scss",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/DDForums/app/assets/javascripts/application.js",
+		"/Users/jaidenking/Documents/workspace/sample_app/sample_app/config/database.yml",
+		"/Users/jaidenking/Documents/workspace/sample_app/readit/config/secrets.yml",
+		"/Users/jaidenking/Documents/workspace/sample_app/readit/config/database.yml",
+		"/Users/jaidenking/mysql-init",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/request.php",
+		"/Users/jaidenking/Documents/Roblox/Big Brother/BigBrother.sublime-project",
+		"/Users/jaidenking/Documents/Roblox/HackUCSC-2016/node_modules/pebble-socket-example/watch-app.js",
+		"/Users/jaidenking/Documents/Roblox/HackUCSC-2016/server.js",
+		"/Users/jaidenking/Documents/Roblox/HackUCSC-2016/sock.js",
+		"/Users/jaidenking/Documents/Roblox/HackUCSC-2016/node_modules/pebble-socket-example/server.js",
+		"/Users/jaidenking/Documents/Roblox/HackUCSC-2016/.gitignore",
+		"/Users/jaidenking/Documents/Roblox/HackUCSC-2016/Lua/Server.lua",
+		"/Users/jaidenking/Documents/Roblox/HackUCSC-2016/pebbleparty/src/js/pebble-js-app.js",
+		"/Users/jaidenking/Documents/Roblox/HackUCSC-2016/Lua/Local.lua",
+		"/Users/jaidenking/Desktop/pebble/JaidenTest/appinfo.json",
+		"/Users/jaidenking/Documents/mondai.exe",
+		"/Users/jaidenking/Desktop/pebble/JaidenTest/src/JaidenTest.c",
+		"/Users/jaidenking/Documents/Roblox/DnDRoblox/Scripts/MainLocal.lua",
+		"/Users/jaidenking/Documents/Roblox/DnDRoblox/Scripts/MainServer.lua",
+		"/Users/jaidenking/Desktop/sample_app/readit/Rakefile",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/views/pages/about.html.erb",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/views/pages/home.html.erb",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/views/pages/directions.html.erb",
+		"/Users/jaidenking/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/jaidenking/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/helpers/application_helper.rb",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/assets/stylesheets/application.css",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/assets/stylesheets/articles.scss",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/views/articles/index.html.erb",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/controllers/comments_controller.rb",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/views/articles/show.html.erb",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/models/article.rb",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/models/user.rb",
+		"/Users/jaidenking/Desktop/sample_app/spblog/config/routes.rb",
+		"/Users/jaidenking/Desktop/sample_app/spblog/app/controllers/users_controller.rb",
+		"/Users/jaidenking/Desktop/sample_app/spblog/config/database.yml",
+		"/Users/jaidenking/Desktop/index.html",
+		"/Users/jaidenking/Desktop/sample_app/sample_app/db/migrate/20151214174652_create_users.rb",
+		"/Users/jaidenking/Desktop/fun.rb",
+		"/Users/jaidenking/Desktop/test.rb",
+		"/Users/jaidenking/Desktop/sample_app/sample_app/config/database.yml",
+		"/Users/jaidenking/Documents/Roblox/RTS/scripts/RTSLocal.lua",
+		"/Users/jaidenking/Documents/Roblox/RTS/scripts/RTSServer.lua",
+		"/Users/jaidenking/Documents/seishun.exe"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"game.Workspace:FindFirstChild(playerName)",
+			"changeColor",
+			"hue",
+			"snap",
+			"getHS",
+			"selecting",
+			"main",
+			"handle",
+			"F",
+			"mesh",
+			"Mesh",
+			"mesh",
+			"Mesh",
+			"mesh",
+			"CharacterMeshs",
+			"Pants",
+			"Scale",
+			"Handle",
+			"Offset",
+			"AttachmentForward",
+			"table.insert",
+			"getCurrentOu",
+			"setup",
+			"_G.local",
+			"localsession",
+			"sess",
+			"print",
+			"Player",
+			"prin",
+			"print",
+			"sessionData",
+			"oad(",
+			"Load",
+			"load",
+			"load(",
+			"load",
+			"sess",
+			"session",
+			"sessionData",
+			"session",
+			"sess",
+			"session",
+			"setupPlayer",
+			"setup",
+			"setup'",
+			"sessionData",
+			"Data=",
+			"Data = ",
+			"_G.",
+			"sessionData =",
+			"sessionData=",
+			"sessionData = ",
+			"_G.session",
+			"v",
+			"SessionDa",
+			"sessionData",
+			"GetPlayer",
+			"sessionData =",
+			"_G",
+			"//",
+			"v",
+			"ipt.Par",
+			"close",
+			"equipHat",
+			"equip",
+			"save",
+			"SaveButton",
+			"GetPlayerData",
+			"getPlayerData",
+			"URLStuff",
+			"loadch",
+			"HeadColor",
+			"destroyR",
+			"destroy",
+			"dumm",
+			"checkforoutfit",
+			"warn",
+			"loadChar",
+			"thing[1]",
+			"please",
+			"drawHats",
+			"arr",
+			"button",
+			"HatRequest",
+			"unequp",
+			"Name",
+			"name",
+			"warn",
+			"equipHat",
+			"equipHat(",
+			"equip",
+			"HatRequested",
+			".json",
+			"init",
+			"connect",
+			"GetPlayerData",
+			"getPlayerData",
+			"MyRemoteFunction",
+			"myRemoteFunction",
+			"PlayerData",
+			"sessionData",
+			"AssetId",
+			".image",
+			"admin",
+			"Admin",
+			"HS:",
+			"555",
+			"0074bd",
+			"333",
+			"5E5E5E",
+			"padding",
+			"banCon",
+			"2",
+			"Assets",
+			"HS",
+			"JSON",
+			"id",
+			"_G.urls",
+			"equippedHats",
+			"urls",
+			"game.Players.LocalPlayer",
+			"toggleB",
+			".text",
+			"insert({ha",
+			"uneq",
+			"_G.Current",
+			"OutfitFrame",
+			"imagebutto"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 207.0,
+	"status_bar_visible": true
+}
