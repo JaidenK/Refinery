@@ -519,6 +519,23 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "Scripts/RandUtil.lua",
+			"settings":
+			{
+				"buffer_size": 416,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ToDo.txt",
+			"settings":
+			{
+				"buffer_size": 173,
+				"line_ending": "Unix",
+				"name": "DONE"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -552,6 +569,7 @@
 	},
 	"file_history":
 	[
+		"/Users/jaidenking/Documents/Roblox/Refinery/untitled folder/RandUtil.lua",
 		"/Users/jaidenking/Documents/Roblox/Big Brother/www/panopticon/index.php",
 		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/LocalScripts/OutfitsLocal.lua",
 		"/Users/jaidenking/Documents/Roblox/Big Brother/lua/StatsModule.lua",
@@ -678,8 +696,7 @@
 		"/Users/jaidenking/Desktop/test.rb",
 		"/Users/jaidenking/Desktop/sample_app/sample_app/config/database.yml",
 		"/Users/jaidenking/Documents/Roblox/RTS/scripts/RTSLocal.lua",
-		"/Users/jaidenking/Documents/Roblox/RTS/scripts/RTSServer.lua",
-		"/Users/jaidenking/Documents/seishun.exe"
+		"/Users/jaidenking/Documents/Roblox/RTS/scripts/RTSServer.lua"
 	],
 	"find":
 	{
@@ -697,6 +714,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"dealaction",
+			"Crude",
 			"game.Workspace:FindFirstChild(playerName)",
 			"changeColor",
 			"hue",
@@ -822,9 +841,7 @@
 			".text",
 			"insert({ha",
 			"uneq",
-			"_G.Current",
-			"OutfitFrame",
-			"imagebutto"
+			"_G.Current"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -842,8 +859,62 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "Scripts/RandUtil.lua",
+					"settings":
+					{
+						"buffer_size": 416,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								164,
+								164
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "ToDo.txt",
+					"settings":
+					{
+						"buffer_size": 173,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								168,
+								168
+							]
+						],
+						"settings":
+						{
+							"auto_name": "DONE",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -903,6 +974,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 207.0,
+	"side_bar_width": 170.0,
 	"status_bar_visible": true
 }

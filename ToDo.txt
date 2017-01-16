@@ -1,0 +1,19 @@
+DONE
+   - Crude Desalter
+   - Preflash Heater
+   - Preflash Distillation
+   - Atm Heater
+   - Atm Distillation
+   - Vacuum Heater
+   - Vacuum Distillation
+   
+TODO
+
+
+
+
+
+
+
+
+
