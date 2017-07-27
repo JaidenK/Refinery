@@ -29,6 +29,7 @@ workspace.ClaimPart.Part.Touched:connect(function(Touched)
       machines.AtmosDist[3].Parent = stats.TycoonModel
       machines.Walls[3].Parent = stats.TycoonModel
       machines.Floor[3].Parent = stats.TycoonModel
+      machines.ControlRoom[3].Parent = stats.TycoonModel
    end, true)
 end)
 
@@ -36,8 +37,8 @@ machines.AtmosDist[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyAtmosDist, true)
 end)
 
-machines.HeavyNaptha[3].TouchPart.Touched:connect(function(Touched)
-   filterTouchEvent(Touched, buyFuncs.buyHeavyNaptha, true)
+machines.HeavyNaphtha[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyFuncs.buyHeavyNaphtha, true)
 end)
 machines.HNHydrotreater[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyHNHydrotreater, true)
@@ -46,14 +47,21 @@ machines.HNCatalyticReformer[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyHNCatalyticReformer, true)
 end)
 
-machines.LightNaptha[3].TouchPart.Touched:connect(function(Touched)
-   filterTouchEvent(Touched, buyFuncs.buyLightNaptha, true)
+machines.LightNaphtha[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyFuncs.buyLightNaphtha, true)
 end)
 machines.LNHydrotreater[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyLNHydrotreater, true)
 end)
 machines.LNIsoPlant[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyLNIsoPlant, true)
+end)
+
+machines.ControlRoom[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyFuncs.buyControlRoom, true)
+end)
+machines.GasolineControls[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyFuncs.buyGasolineControls, true)
 end)
 
 machines.Walls[3].TouchPart.Touched:connect(function(Touched)
