@@ -1,0 +1,30 @@
+
+workspace.ClaimPart.Part.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, function(Touched)
+      local Player = game.Players:GetPlayerFromCharacter(Touched.Parent)
+      setOwner(Player)
+      workspace.ClaimPart.Part:Destroy()
+      workspace.ClaimPart["Claim Refinery"].Name = Player.Name.."'s Refinery"
+      machines.AtmosDist[3].Parent = TycoonModel
+      machines.Walls[3].Parent = TycoonModel
+      machines.Floor[3].Parent = TycoonModel
+   end, true)
+end)
+machines.AtmosDist[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyAtmosDist, true)
+end)
+machines.HeavyNaptha[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyHeavyNaptha, true)
+end)
+machines.HNHydrotreater[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyHNHydrotreater, true)
+end)
+machines.HNCatalyticReformer[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyHNCatalyticReformer, true)
+end)
+machines.Walls[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyWalls, true)
+end)
+machines.Floor[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyFloor, true)
+end)
