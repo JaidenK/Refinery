@@ -30,6 +30,7 @@ workspace.ClaimPart.Part.Touched:connect(function(Touched)
       machines.Walls[3].Parent = stats.TycoonModel
       machines.Floor[3].Parent = stats.TycoonModel
       machines.ControlRoom[3].Parent = stats.TycoonModel
+      machines.GasolineStorage[3].Parent = stats.TycoonModel
    end, true)
 end)
 
@@ -57,11 +58,18 @@ machines.LNIsoPlant[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyLNIsoPlant, true)
 end)
 
+machines.GasolineStorage[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyFuncs.buyGasolineStorage, true)
+end)
+
 machines.ControlRoom[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyControlRoom, true)
 end)
 machines.GasolineControls[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyGasolineControls, true)
+end)
+machines.MarketControls[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyFuncs.buyMarketControls, true)
 end)
 
 machines.Walls[3].TouchPart.Touched:connect(function(Touched)

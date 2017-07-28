@@ -40,7 +40,7 @@ end
 require(script.TouchConnects)
 
 while(wait(1))do
-   local gasolineProduced = math.min(stats.crudeIntake,stats.production.gasoline)
-   stats.cash = stats.cash + stats.marketPrice.gasoline * gasolineProduced
+   local gasolineProduced = math.min(stats.production.crude,stats.production.gasoline)
+   stats.cash = stats.cash + workspace.MarketPrice.Gasoline.Value * gasolineProduced
    if stats.owner then stats.updatePlayerVariables() end
 end

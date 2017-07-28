@@ -1,16 +1,16 @@
 local machines = require(script.Parent.Machines)
 local stats = {
-   TycoonModel = workspace,
+   TycoonModel = workspace.Tycoon,
    owner = nil,
    PlayerVariables = nil,
-   cash = 1000,
-   crudeIntake = 100
+   cash = 10000,
 }
 stats.production = {
+   crude = 100,
    gasoline = 0
 }
-stats.marketPrice = {
-   gasoline = 10
+stats.storage = {
+   gasoline = {stored = 0, max = 0}
 }
 
 
@@ -23,15 +23,35 @@ function stats.giveVariables()
    NumberValue.Name = "Wallet"
    NumberValue.Parent = Folder
 
-   local NumberValue = Instance.new("NumberValue")
-   NumberValue.Name = "MarketPriceGasoline"
-   NumberValue.Parent = Folder
+   local FolderProduction = Instance.new("Folder")
+   FolderProduction.Name = "Production"
+   FolderProduction.Parent = Folder
 
-   local NumberValue = Instance.new("NumberValue")
-   NumberValue.Name = "CrudeIntake"
-   NumberValue.Parent = Folder
+      local NumberValue = Instance.new("NumberValue")
+      NumberValue.Name = "Crude"
+      NumberValue.Parent = FolderProduction
 
-   Folder.Parent = stats.owner.PlayerGui
+      local NumberValue = Instance.new("NumberValue")
+      NumberValue.Name = "Gasoline"
+      NumberValue.Parent = FolderProduction
+
+   local FolderStorage = Instance.new("Folder")
+   FolderStorage.Name = "Storage"
+   FolderStorage.Parent = Folder
+
+      local FolderStorageGasoline = Instance.new("Folder")
+      FolderStorageGasoline.Name = "Gasoline"
+      FolderStorageGasoline.Parent = FolderStorage
+
+         local NumberValue = Instance.new("NumberValue")
+         NumberValue.Name = "Stored"
+         NumberValue.Parent = FolderStorageGasoline
+
+         local NumberValue = Instance.new("NumberValue")
+         NumberValue.Name = "Max"
+         NumberValue.Parent = FolderStorageGasoline
+
+   Folder.Parent = stats.TycoonModel
    stats.PlayerVariables = Folder
    stats.updatePlayerVariables()
 end
@@ -42,8 +62,10 @@ function stats.setOwner(Player)
 end
 function stats.updatePlayerVariables() 
    stats.PlayerVariables.Wallet.Value = stats.cash
-   stats.PlayerVariables.MarketPriceGasoline.Value = stats.marketPrice.gasoline
-   stats.PlayerVariables.CrudeIntake.Value = stats.crudeIntake
+   stats.PlayerVariables.Production.Crude.Value = stats.production.crude
+   stats.PlayerVariables.Production.Gasoline.Value = stats.production.gasoline
+   stats.PlayerVariables.Storage.Gasoline.Stored.Value = stats.storage.gasoline.stored
+   stats.PlayerVariables.Storage.Gasoline.Max.Value = stats.storage.gasoline.max
 end
 function stats.spendCash( amount )
    assert(stats.cash >= amount,"Insufficient funds.")

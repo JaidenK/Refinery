@@ -10,6 +10,7 @@ function standardBuy(Touched, machine, product)
    machine[4].Parent = stats.TycoonModel
    if product then
       stats.production[product] = stats.production[product] + machine[5]
+      stats.updatePlayerVariables()
    end
 end
 
@@ -46,13 +47,25 @@ function buyFuncs.buyLNIsoPlant(Touched)
    standardBuy(Touched, machines.LNIsoPlant,"gasoline")
 end
 
+function buyFuncs.buyGasolineStorage(Touched)
+   standardBuy(Touched, machines.GasolineStorage)
+   stats.storage.gasoline.max = stats.storage.gasoline.max + machines.GasolineStorage[5]
+   stats.updatePlayerVariables()
+
+   machines.GasolineStorage[3].Parent = stats.TycoonModel
+end
+
 function buyFuncs.buyControlRoom(Touched)
    standardBuy(Touched, machines.ControlRoom)
 
    machines.GasolineControls[3].Parent = stats.TycoonModel
+   machines.MarketControls[3].Parent = stats.TycoonModel
 end
 function buyFuncs.buyGasolineControls(Touched)
    standardBuy(Touched, machines.GasolineControls)
+end
+function buyFuncs.buyMarketControls(Touched)
+   standardBuy(Touched, machines.MarketControls)
 end
 
 function buyFuncs.buyWalls(Touched)
