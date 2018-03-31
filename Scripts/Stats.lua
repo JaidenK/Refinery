@@ -12,6 +12,7 @@ stats.production = {
 stats.storage = {
    gasoline = {stored = 0, max = 0}
 }
+stats.export = 0
 
 
 -- Puts the variables and data in the player for their GUI to use

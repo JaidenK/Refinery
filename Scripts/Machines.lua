@@ -13,6 +13,9 @@ local machines = {
 
    GasolineStorage = {100, "Gasoline Storage", workspace.BuyGasolineStorage, workspace.GasolineStorage, 50},
 
+   TruckDepot = {100, "Truck Depot", workspace.BuyTruckDepot, workspace.TruckDepot, 10},
+   CrudeImport = {100, "Crude Import", workspace.BuyCrudeImport, workspace.CrudePipe, 10},
+
    ControlRoom = {100, "Control Room", workspace.BuyControlRoom, workspace.ControlRoom},
    GasolineControls = {100, "Gasoline Controls", workspace.BuyGasolineControls, workspace.GasolineControls},
    MarketControls = {100, "Market Controls", workspace.BuyMarketControls, workspace.MarketControls},

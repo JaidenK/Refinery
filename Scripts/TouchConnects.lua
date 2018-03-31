@@ -1,5 +1,6 @@
 local machines = require(script.Parent.Machines)
 local buyFuncs = require(script.Parent.BuyFuncs)
+local Tutorial = require(script.Parent.Tutorial)
 local stats = require(script.Parent.Stats)
 
 local debounce = false
@@ -31,6 +32,8 @@ workspace.ClaimPart.Part.Touched:connect(function(Touched)
       machines.Floor[3].Parent = stats.TycoonModel
       machines.ControlRoom[3].Parent = stats.TycoonModel
       machines.GasolineStorage[3].Parent = stats.TycoonModel
+      machines.TruckDepot[3].Parent = stats.TycoonModel
+      Tutorial.giveTutorial(Player)
    end, true)
 end)
 
@@ -60,6 +63,12 @@ end)
 
 machines.GasolineStorage[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyGasolineStorage, true)
+end)
+machines.TruckDepot[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyFuncs.buyTruckDepot, true)
+end)
+machines.CrudeImport[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyFuncs.buyCrudeImport, true)
 end)
 
 machines.ControlRoom[3].TouchPart.Touched:connect(function(Touched)

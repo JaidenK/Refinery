@@ -55,6 +55,14 @@ function buyFuncs.buyGasolineStorage(Touched)
    machines.GasolineStorage[3].Parent = stats.TycoonModel
 end
 
+function buyFuncs.buyTruckDepot(Touched)
+   standardBuy(Touched, machines.TruckDepot)
+   stats.export = stats.export + machines.TruckDepot[5]
+   stats.updatePlayerVariables()
+
+   machines.TruckDepot[3].Parent = stats.TycoonModel
+end
+
 function buyFuncs.buyControlRoom(Touched)
    standardBuy(Touched, machines.ControlRoom)
 
