@@ -27,12 +27,11 @@ workspace.ClaimPart.Part.Touched:connect(function(Touched)
       stats.setOwner(Player)
       workspace.ClaimPart.Part:Destroy()
       workspace.ClaimPart["Claim Refinery"].Name = Player.Name.."'s Refinery"
-      machines.AtmosDist[3].Parent = stats.TycoonModel
       machines.Walls[3].Parent = stats.TycoonModel
       machines.Floor[3].Parent = stats.TycoonModel
       machines.ControlRoom[3].Parent = stats.TycoonModel
       machines.GasolineStorage[3].Parent = stats.TycoonModel
-      machines.TruckDepot[3].Parent = stats.TycoonModel
+      machines.CrudeImport[3].Parent = stats.TycoonModel
       Tutorial.giveTutorial(Player)
    end, true)
 end)
@@ -59,6 +58,10 @@ machines.LNHydrotreater[3].TouchPart.Touched:connect(function(Touched)
 end)
 machines.LNIsoPlant[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyLNIsoPlant, true)
+end)
+
+machines.Asphalt[3].TouchPart.Touched:connect(function(Touched)
+   filterTouchEvent(Touched, buyFuncs.buyAsphalt, true)
 end)
 
 machines.GasolineStorage[3].TouchPart.Touched:connect(function(Touched)

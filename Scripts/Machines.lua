@@ -11,6 +11,8 @@ local machines = {
    LNHydrotreater = {200, "Light Naphtha Hydrotreater", workspace.BuyLNHydrotreater, workspace.LNHydrotreater, 1},
    LNIsoPlant = {300, "Light Naphtha Isomerization Plant", workspace.BuyLNIsoPlant, workspace.LNIsoPlant, 1},
 
+   Asphalt = {100, "Asphalt Processing", workspace.BuyAsphalt, workspace.AsphaltPipe, 1},
+
    GasolineStorage = {100, "Gasoline Storage", workspace.BuyGasolineStorage, workspace.GasolineStorage, 50},
 
    TruckDepot = {100, "Truck Depot", workspace.BuyTruckDepot, workspace.TruckDepot, 10},

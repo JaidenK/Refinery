@@ -1,6 +1,7 @@
 local buyFuncs = {}
 local stats = require(script.Parent.Stats)
 local machines = require(script.Parent.Machines)
+local Tutorial = require(script.Parent.Tutorial)
 
 function standardBuy(Touched, machine, product)
    local Player = game.Players:GetPlayerFromCharacter(Touched.Parent)
@@ -17,8 +18,10 @@ end
 function buyFuncs.buyAtmosDist(Touched)
    standardBuy(Touched, machines.AtmosDist)
 
-   machines.HeavyNaphtha[3].Parent = stats.TycoonModel
-   machines.LightNaphtha[3].Parent = stats.TycoonModel
+   --machines.HeavyNaphtha[3].Parent = stats.TycoonModel
+   --machines.LightNaphtha[3].Parent = stats.TycoonModel
+   machines.Asphalt[3].Parent = stats.TycoonModel
+   Tutorial.boughtAtmosDist()
 end
 
 function buyFuncs.buyHeavyNaphtha(Touched)
@@ -47,12 +50,19 @@ function buyFuncs.buyLNIsoPlant(Touched)
    standardBuy(Touched, machines.LNIsoPlant,"gasoline")
 end
 
+function buyFuncs.buyAsphalt(Touched)
+   standardBuy(Touched, machines.Asphalt,"asphalt")
+
+   machines.TruckDepot[3].Parent = stats.TycoonModel
+   Tutorial.boughtAsphalt()
+end
+
 function buyFuncs.buyGasolineStorage(Touched)
    standardBuy(Touched, machines.GasolineStorage)
    stats.storage.gasoline.max = stats.storage.gasoline.max + machines.GasolineStorage[5]
    stats.updatePlayerVariables()
 
-   machines.GasolineStorage[3].Parent = stats.TycoonModel
+   --machines.GasolineStorage[3].Parent = stats.TycoonModel
 end
 
 function buyFuncs.buyTruckDepot(Touched)
@@ -60,7 +70,17 @@ function buyFuncs.buyTruckDepot(Touched)
    stats.export = stats.export + machines.TruckDepot[5]
    stats.updatePlayerVariables()
 
-   machines.TruckDepot[3].Parent = stats.TycoonModel
+   Tutorial.boughtTruckDepot()
+   --machines.TruckDepot[3].Parent = stats.TycoonModel
+end
+
+function buyFuncs.buyCrudeImport(Touched)
+   standardBuy(Touched, machines.CrudeImport)
+   stats.import = stats.import + machines.CrudeImport[5]
+   stats.updatePlayerVariables()
+
+   machines.AtmosDist[3].Parent = stats.TycoonModel
+   Tutorial.boughtCrudeImport()
 end
 
 function buyFuncs.buyControlRoom(Touched)

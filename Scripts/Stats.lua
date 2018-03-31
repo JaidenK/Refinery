@@ -7,12 +7,14 @@ local stats = {
 }
 stats.production = {
    crude = 100,
-   gasoline = 0
+   gasoline = 0,
+   asphalt = 0
 }
 stats.storage = {
    gasoline = {stored = 0, max = 0}
 }
 stats.export = 0
+stats.import = 0
 
 
 -- Puts the variables and data in the player for their GUI to use
