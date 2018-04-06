@@ -1,10 +1,10 @@
 local machines = require(script.Parent.Machines)
 local buyFuncs = require(script.Parent.BuyFuncs)
 local Tutorial = require(script.Parent.Tutorial)
-local stats = require(script.Parent.Stats)
+local stats    = require(script.Parent.Stats)
 
 local debounce = false
-local debounceTime = 0.1
+local debounceTime = 0.5
 -- Tests if the touching thing is a player/humanoid then runs the given
 -- function.
 function filterTouchEvent(Touched, func, useDebounce)
@@ -13,7 +13,9 @@ function filterTouchEvent(Touched, func, useDebounce)
          if debounce then return end
          debounce = true
       end
-      ypcall(function()func(Touched)end)
+      -- ypcall(function()
+         func(Touched)
+      -- end)
       if useDebounce then
          wait(debounceTime)
          debounce = false
@@ -21,17 +23,46 @@ function filterTouchEvent(Touched, func, useDebounce)
    end
 end
 
-workspace.ClaimPart.Part.Touched:connect(function(Touched)
+
+
+
+workspace.ClaimTycoon1.Part.Touched:connect(function(Touched)
    filterTouchEvent(Touched, function(Touched)
       local Player = game.Players:GetPlayerFromCharacter(Touched.Parent)
-      stats.setOwner(Player)
-      workspace.ClaimPart.Part:Destroy()
-      workspace.ClaimPart["Claim Refinery"].Name = Player.Name.."'s Refinery"
-      machines.Walls[3].Parent = stats.TycoonModel
-      machines.Floor[3].Parent = stats.TycoonModel
-      machines.ControlRoom[3].Parent = stats.TycoonModel
-      machines.GasolineStorage[3].Parent = stats.TycoonModel
-      machines.CrudeImport[3].Parent = stats.TycoonModel
+      stats.setOwner(Player, workspace.ClaimTycoon1.Part)
+      workspace.ClaimTycoon1.Part.CanCollide = false
+      workspace.ClaimTycoon1.Part.Transparency = 1
+      workspace.ClaimTycoon1:WaitForChild("Claim Refinery").Name = Player.Name.."'s Refinery"
+
+      -- Walls
+      stats.putInTycoonModel(Player, machines.Walls[3], function(Touched)
+         filterTouchEvent(Touched, buyFuncs.buyWalls, true)
+      end, function()
+         Player.PlayerGui.ItemDescriptionEvent:FireClient(Player, machines.Walls)
+      end)
+
+      -- Floor
+      stats.putInTycoonModel(Player, machines.Floor[3], function(Touched)
+         filterTouchEvent(Touched, buyFuncs.buyFloor, true)
+      end)
+
+      -- Control Room
+      stats.putInTycoonModel(Player, machines.ControlRoom[3], function(Touched)
+         filterTouchEvent(Touched, buyFuncs.buyControlRoom, true)
+      end)
+
+      -- Gasoline Storage
+      stats.putInTycoonModel(Player, machines.GasolineStorage[3], function(Touched)
+         filterTouchEvent(Touched, buyFuncs.buyGasolineControls, true)
+      end)
+
+      -- Crude Import
+      stats.putInTycoonModel(Player, machines.CrudeImport[3], function(Touched)
+         filterTouchEvent(Touched, buyFuncs.buyCrudeImport, true)
+      end, function()
+         Player.PlayerGui.ItemDescriptionEvent:FireClient(Player, machines.CrudeImport)
+      end)
+
       Tutorial.giveTutorial(Player)
    end, true)
 end)
@@ -70,24 +101,9 @@ end)
 machines.TruckDepot[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyTruckDepot, true)
 end)
-machines.CrudeImport[3].TouchPart.Touched:connect(function(Touched)
-   filterTouchEvent(Touched, buyFuncs.buyCrudeImport, true)
-end)
 
-machines.ControlRoom[3].TouchPart.Touched:connect(function(Touched)
-   filterTouchEvent(Touched, buyFuncs.buyControlRoom, true)
-end)
-machines.GasolineControls[3].TouchPart.Touched:connect(function(Touched)
-   filterTouchEvent(Touched, buyFuncs.buyGasolineControls, true)
-end)
 machines.MarketControls[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyMarketControls, true)
 end)
 
-machines.Walls[3].TouchPart.Touched:connect(function(Touched)
-   filterTouchEvent(Touched, buyFuncs.buyWalls, true)
-end)
-machines.Floor[3].TouchPart.Touched:connect(function(Touched)
-   filterTouchEvent(Touched, buyFuncs.buyFloor, true)
-end)
 return nil

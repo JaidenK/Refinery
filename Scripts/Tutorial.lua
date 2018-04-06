@@ -5,16 +5,21 @@ local Tutorial = {
    ArrowPart = game.ReplicatedStorage.TutorialArrow
 }
 local machines = require(script.Parent.Machines)
+local stats = require(script.Parent.Stats)
 
 function updateText(message)
+   Tutorial.Frame.Visible = false
+   wait()
+   Tutorial.Frame.Visible = true
    Tutorial.Frame.MainText.Text = message
-   Tutorial.Gui.Enabled = true
 end
 
-function moveCursor(BuyModel)
+function moveCursor(Player, BuyModel)
    if not BuyModel then
       Tutorial.ArrowPart:Destroy()
    else
+      local sTab = stats.getSTab(Player)
+
       Tutorial.ArrowPart.Parent = workspace
       Tutorial.ArrowPart.CFrame = BuyModel.TouchPart.CFrame
    end
@@ -25,9 +30,9 @@ function Tutorial.giveTutorial(Player)
    Tutorial.Gui = game.ReplicatedFirst.TutorialGui:Clone()
    Tutorial.Gui.Parent = Player.PlayerGui
    Tutorial.Frame = Tutorial.Gui.Frame
-
-   updateText("You have just purchased an empty plot of land with plans of building a large and profitable oil refinery. You don't have a whole lot of materials science or business management under your belt, so you can only refine basic products on a small scale to start. The first step to refining anything is to import crude oil. Buy a crude oil pipeline from a local oil drilling company.")
-   moveCursor(machines.CrudeImport[3])
+   wait(0.1)
+   updateText("You have just purchased an empty plot of land near some oil fields in Texas with plans of building a large and profitable oil refinery. You don't have a whole lot of materials science or business management under your belt, so you can only refine basic products on a small scale to start. The first step to refining anything is to import crude oil. Buy a crude oil pipeline from a local oil drilling company by walking over the red button labeld \"Crude Import.\" TIP: Some buttons can be clicked before buying them to read a description of what they do.")
+   moveCursor(Player, machines.CrudeImport[3])
 end
 
 function Tutorial.boughtCrudeImport()

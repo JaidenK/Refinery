@@ -3,16 +3,39 @@ local stats = require(script.Parent.Stats)
 local machines = require(script.Parent.Machines)
 local Tutorial = require(script.Parent.Tutorial)
 
+-- Copied from TouchConnects
+local debounce = false
+local debounceTime = 0.5
+-- Tests if the touching thing is a player/humanoid then runs the given
+-- function.
+function filterTouchEvent(Touched, func, useDebounce)
+   if Touched.Parent:FindFirstChild("Humanoid") then
+      if useDebounce then
+         if debounce then return end
+         debounce = true
+      end
+      -- ypcall(function()
+         func(Touched)
+      -- end)
+      if useDebounce then
+         wait(debounceTime)
+         debounce = false
+      end
+   end
+end
+
+
 function standardBuy(Touched, machine, product)
    local Player = game.Players:GetPlayerFromCharacter(Touched.Parent)
-   assert(Player == stats.owner)
-   stats.spendCash(machine[1])
-   machine[3]:Destroy()
-   machine[4].Parent = stats.TycoonModel
+   assert(stats.spendCash(Player, machine[1]))
+   local sTab = stats.getSTab(Player)
+   sTab.TycoonModel[machine[3].Name]:Destroy()
+   stats.putInTycoonModel(Player, machine[4])
    if product then
-      stats.production[product] = stats.production[product] + machine[5]
+      sTab.production[product] = sTab.production[product] + machine[5]
       stats.updatePlayerVariables()
    end
+   return Player, sTab
 end
 
 function buyFuncs.buyAtmosDist(Touched)
@@ -75,16 +98,21 @@ function buyFuncs.buyTruckDepot(Touched)
 end
 
 function buyFuncs.buyCrudeImport(Touched)
-   standardBuy(Touched, machines.CrudeImport)
-   stats.import = stats.import + machines.CrudeImport[5]
+   local Player, sTab = standardBuy(Touched, machines.CrudeImport)
+   sTab.import = sTab.import + machines.CrudeImport[5]
    stats.updatePlayerVariables()
 
-   machines.AtmosDist[3].Parent = stats.TycoonModel
+
+   stats.putInTycoonModel(Player, machines.AtmosDist[3], function(Touched)
+      filterTouchEvent(Touched, buyFuncs.buyAtmosDist, true)
+   end, function()
+      Player.PlayerGui.ItemDescriptionEvent:FireClient(Player, machines.AtmosDist)
+   end)
    Tutorial.boughtCrudeImport()
 end
 
 function buyFuncs.buyControlRoom(Touched)
-   standardBuy(Touched, machines.ControlRoom)
+   local Player, sTab = standardBuy(Touched, machines.ControlRoom)
 
    machines.GasolineControls[3].Parent = stats.TycoonModel
    machines.MarketControls[3].Parent = stats.TycoonModel

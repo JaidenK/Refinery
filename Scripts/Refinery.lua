@@ -33,14 +33,16 @@ local machines = require(script.Machines)
 -- machine itself
 for _,machine in pairs(machines) do
    machine[3]["$"].Name = "$"..machine[1]
-   machine[3].Parent = game.ServerStorage
-   machine[4].Parent = game.ServerStorage
+   machine[3].Parent = game.ReplicatedStorage
+   machine[4].Parent = game.ReplicatedStorage
 end
 
 require(script.TouchConnects)
 
 while(wait(1))do
-   local gasolineProduced = math.min(stats.production.crude,stats.production.gasoline)
-   stats.cash = stats.cash + workspace.MarketPrice.Gasoline.Value * gasolineProduced
-   if stats.owner then stats.updatePlayerVariables() end
+   for _,sTab in ipairs(stats) do
+      local gasolineProduced = math.min(sTab.import,sTab.production.gasoline,sTab.export)
+      sTab.cash = sTab.cash + workspace.MarketPrice.Gasoline.Value * gasolineProduced
+   end
+   stats.updatePlayerVariables()
 end
