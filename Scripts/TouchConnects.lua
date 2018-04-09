@@ -38,7 +38,7 @@ workspace.ClaimTycoon1.Part.Touched:connect(function(Touched)
       stats.putInTycoonModel(Player, machines.Walls[3], function(Touched)
          filterTouchEvent(Touched, buyFuncs.buyWalls, true)
       end, function()
-         Player.PlayerGui.ItemDescriptionEvent:FireClient(Player, machines.Walls)
+         game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.Walls)
       end)
 
       -- Floor
@@ -60,7 +60,7 @@ workspace.ClaimTycoon1.Part.Touched:connect(function(Touched)
       stats.putInTycoonModel(Player, machines.CrudeImport[3], function(Touched)
          filterTouchEvent(Touched, buyFuncs.buyCrudeImport, true)
       end, function()
-         Player.PlayerGui.ItemDescriptionEvent:FireClient(Player, machines.CrudeImport)
+         game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.CrudeImport)
       end)
 
       Tutorial.giveTutorial(Player)
@@ -105,5 +105,7 @@ end)
 machines.MarketControls[3].TouchPart.Touched:connect(function(Touched)
    filterTouchEvent(Touched, buyFuncs.buyMarketControls, true)
 end)
+
+print("TouchConnects: ready.")
 
 return nil

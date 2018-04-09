@@ -2,7 +2,7 @@
 -- red button to buy an item, this will give you a pop up with a
 -- description of the item.
 
-script.Parent.Parent:WaitForChild("ItemDescriptionEvent").OnClientEvent:connect(function(machine)
+game.ReplicatedStorage:WaitForChild("ItemDescriptionEvent").OnClientEvent:connect(function(machine)
    script.Parent.Enabled = true
    script.Parent.Frame.TextLabel.Text = machine[2]
    script.Parent.Frame.MainText.Text = machine[6]
@@ -29,3 +29,5 @@ script.Parent.Parent:WaitForChild("ItemDescriptionEvent").OnClientEvent:connect(
       script.Parent.Frame.ImageFrame.ImageLabel.Size = UDim2.new(0,0,0,0)
    end
 end)
+
+print("ItemDescription: Ready.")

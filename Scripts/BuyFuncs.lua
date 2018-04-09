@@ -24,9 +24,13 @@ function filterTouchEvent(Touched, func, useDebounce)
    end
 end
 
+function getPlayerFromTouched(Touched)
+   return game.Players:GetPlayerFromCharacter(Touched.Parent)
+end
+
 
 function standardBuy(Touched, machine, product)
-   local Player = game.Players:GetPlayerFromCharacter(Touched.Parent)
+   local Player = getPlayerFromTouched(Touched)
    assert(stats.spendCash(Player, machine[1]))
    local sTab = stats.getSTab(Player)
    sTab.TycoonModel[machine[3].Name]:Destroy()
@@ -37,14 +41,29 @@ function standardBuy(Touched, machine, product)
    end
    return Player, sTab
 end
+function standardInsert(Touched, machineName)
+   local Player = getPlayerFromTouched(Touched)
+   stats.putInTycoonModel(Player, machines[machineName][3], function(Touched)
+      filterTouchEvent(Touched, buyFuncs["buy"..machineName], true)
+   end, function()
+      game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines[machineName])
+   end)
+end
 
 function buyFuncs.buyAtmosDist(Touched)
    standardBuy(Touched, machines.AtmosDist)
 
    --machines.HeavyNaphtha[3].Parent = stats.TycoonModel
    --machines.LightNaphtha[3].Parent = stats.TycoonModel
-   machines.Asphalt[3].Parent = stats.TycoonModel
-   Tutorial.boughtAtmosDist()
+
+   local Player = getPlayerFromTouched(Touched)
+   stats.putInTycoonModel(Player, machines.Asphalt[3], function(Touched)
+      filterTouchEvent(Touched, buyFuncs.buyAsphalt, true)
+   end, function()
+      game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.Asphalt)
+   end)
+   Tutorial.boughtAtmosDist(getPlayerFromTouched(Touched))
+
 end
 
 function buyFuncs.buyHeavyNaphtha(Touched)
@@ -76,8 +95,14 @@ end
 function buyFuncs.buyAsphalt(Touched)
    standardBuy(Touched, machines.Asphalt,"asphalt")
 
-   machines.TruckDepot[3].Parent = stats.TycoonModel
-   Tutorial.boughtAsphalt()
+   
+   local Player = getPlayerFromTouched(Touched)
+   stats.putInTycoonModel(Player, machines.TruckDepot[3], function(Touched)
+      filterTouchEvent(Touched, buyFuncs.buyTruckDepot, true)
+   end, function()
+      game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.TruckDepot)
+   end)
+   Tutorial.boughtAsphalt(getPlayerFromTouched(Touched))
 end
 
 function buyFuncs.buyGasolineStorage(Touched)
@@ -90,11 +115,13 @@ end
 
 function buyFuncs.buyTruckDepot(Touched)
    standardBuy(Touched, machines.TruckDepot)
-   stats.export = stats.export + machines.TruckDepot[5]
+   local sTab = stats.getSTab(getPlayerFromTouched(Touched))
+   sTab.export = sTab.export + machines.TruckDepot[5]
    stats.updatePlayerVariables()
 
-   Tutorial.boughtTruckDepot()
+   Tutorial.boughtTruckDepot(getPlayerFromTouched(Touched))
    --machines.TruckDepot[3].Parent = stats.TycoonModel
+
 end
 
 function buyFuncs.buyCrudeImport(Touched)
@@ -103,12 +130,13 @@ function buyFuncs.buyCrudeImport(Touched)
    stats.updatePlayerVariables()
 
 
-   stats.putInTycoonModel(Player, machines.AtmosDist[3], function(Touched)
-      filterTouchEvent(Touched, buyFuncs.buyAtmosDist, true)
-   end, function()
-      Player.PlayerGui.ItemDescriptionEvent:FireClient(Player, machines.AtmosDist)
-   end)
-   Tutorial.boughtCrudeImport()
+   standardInsert(Touched, "AtmosDist")
+   -- stats.putInTycoonModel(Player, machines.AtmosDist[3], function(Touched)
+   --    filterTouchEvent(Touched, buyFuncs.buyAtmosDist, true)
+   -- end, function()
+   --    game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.AtmosDist)
+   -- end)
+   Tutorial.boughtCrudeImport(getPlayerFromTouched(Touched))
 end
 
 function buyFuncs.buyControlRoom(Touched)

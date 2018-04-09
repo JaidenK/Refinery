@@ -1,6 +1,18 @@
 
 local machines = {
---          {cost, full name, buy brick, machine model, production increase}
+   -- {
+   --    cost, 
+   --    full name, 
+   --    buy brick, 
+   --    machine model, 
+   --    production increase, 
+   --    description, 
+   --    {
+   --       desc. img. id, 
+   --       img width, 
+   --       img height
+   --    }
+   -- }
    AtmosDist = {500, "Atmospheric Distillation", workspace.BuyAtmosDist, workspace.AtmosDist, nil, "Atmospheric distillation towers are where the crude is seperated into different fractions based on their boiling points. Boiling crude oil is pumped into the tower near the bottom, and it rises due to heat. As it rises, it cools, and different fractions will settle out due to their different boiling points. By placing many trays inside the tower, it's possible to capture these different fractions at various heights inside the tower. The fractions will be further processed into things like fuel, asphalt, lubricants, plastics, etc.", {1581633081, 144, 265}},
 
    HeavyNaphtha = {100, "Heavy Naphtha Processing", workspace.BuyHeavyNaphtha, workspace.HeavyNaphthaAndGasolinePool, 1},
