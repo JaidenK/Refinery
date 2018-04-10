@@ -13,10 +13,13 @@ local Buttons = {
 local grid = {}
 local activeFrames = {}
 local pieces = require(script.Pieces)
-local currentRotation = 1
+local currentRotation = 0
+local referencePiece = nil
 local currentPiece = nil -- pieces.StraightPipe
 local currentPos = {0,0}
 local isCurrentPosValid = true
+
+local Graph = {}
 
 local MAX_WIDTH = 10
 local MAX_HEIGHT = 5
@@ -109,16 +112,73 @@ function buildGrid()
          grid[row][col] = {
             newCell,
             Color3.new(1,1,1),
-            0
+            0,
+            {} -- The pieces on this grid cell
          }
       end
    end
 end
 
-function equipPiece(Piece)
+-- Assumes the piece is in a valid spot.
+function placePiece()
+   -- Check spaces on the inputs. If there is a piece there, check if
+   -- the current piece is on that piece's input. If the inputs match,
+   -- create the connection.
+
+   if not currentPiece then return end
+
+   -- Warn if a piece already is here.
+   local currGrid = getGrid()
+   if #currGrid[4] > 0 then
+      warn("A piece already exists at ("..currentPos[1]..","..currentPos[2]..")")
+   end
+
+   -- Put piece into gride table.
+   table.insert(currGrid[4], currentPiece)
+
+   -- test each input pos
+   for _,pos in ipairs(currentPiece.inputs) do
+      local neighboringGrid = getGrid(pos[1],pos[2])
+      -- loop through every piece in the neighboring grid spot.
+      if neighboringGrid then 
+         for _,piece in ipairs(neighboringGrid[4]) do
+            for _,input in ipairs(piece.inputs) do
+               if piece.pos[1]+input[1] == currentPos[1] and piece.pos[2]+input[2] == currentPos[2] then
+                  connectPiece(piece)
+               end
+            end
+         end
+      end
+   end
+   table.insert(Graph, currentPiece)
+   currentPiece = nil
+   equipPiece()
+   movePiece()
+end
+
+function connectPiece(Piece)
+   table.insert(Piece.neighbors, currentPiece)
+   table.insert(currentPiece.neighbors, Piece)
+   print("JigsawPuzzle: Connection made.")
+end
+
+function equipPiece()
    unequipPiece()
-   currentPiece = Piece
-   currentPiece.Label = Piece.Label:Clone()
+   currentPiece = {}
+   currentPiece.cost = referencePiece.cost
+   currentPiece.Label = referencePiece.Label:Clone()
+   currentPiece.Label.Parent = nil
+   currentPiece.inputs = {}
+   for i,v in ipairs(referencePiece.inputs) do
+      currentPiece.inputs[i] = v
+   end
+   currentPiece.pos = {0,0}
+   currentPiece.neighbors = {}
+   if currentRotation > 0 then
+      for i=1,currentRotation/90 do
+         rotatePiece()
+      end
+   end
 end
 
 function unequipPiece()
@@ -128,13 +188,45 @@ function unequipPiece()
    end
 end
 
+function rotatePiece()
+   if currentPiece and currentPiece.Label.Parent then
+      print("JigsawPuzzle: rotate piece")
+      -- Clockwise rotation
+      currentRotation = currentRotation + 90
+      currentPiece.Label.Rotation = currentRotation
+
+      local newInputs = {}
+      for i,v in ipairs(currentPiece.inputs) do
+            -v[2],
+            v[1]
+         }
+         print("JigsawPuzzle: ("..v[1]..","..v[2]..") -> ("..newCoord[1]..","..newCoord[2]..")")
+         newInputs[i] = newCoord
+      end
+      currentPiece.inputs = newInputs
+   end
+end
+
 function getCurrCell()
-   return grid[currentPos[1]][currentPos[2]][1]
+   local gridPos = getGrid()
+   if gridPos then 
+      return gridPos[1]
+   end
+   return nil
+end
+function getGrid(x, y)
+   local newX = currentPos[1] + (x and x or 0)
+   local newY = currentPos[2] + (y and y or 0)
+   if newX <= MAX_HEIGHT and newY <= MAX_WIDTH then
+      return grid[newX][newY]
+   end
+   return nil
 end
 
 function movePiece()
    if currentPiece then
       currentPiece.Label.Parent = getCurrCell()
+      currentPiece.pos = currentPos
    end
 
 
@@ -156,23 +248,41 @@ function movePiece()
    -- end
 end
 
--- script.Parent.Frame.InputBegan:connect(function(input)
---    if input.UserInputType == Enum.UserInputType.MouseButton1 and input.UserInputState == Enum.UserInputState.Begin then -- left mouse button down
---       assert(isCurrentPosValid,"Invalid position.")
---       for i,gridPos in ipairs(activeFrames) do
---          gridPos[2] = Color3.new(.05,.05,.05)
---          gridPos[1].BackgroundColor3 = gridPos[2]
---          gridPos[3] = 1
---       end
---    else if input.UserInputType == Enum.UserInputType.MouseButton2 and input.UserInputState == Enum.UserInputState.Begin then -- Right mouse button down
---       currentRotation = currentRotation + 1
---       if currentRotation > #currentPiece then 
---          currentRotation = 1
---       end
---       movePiece()
---    end
---    end
--- end)
+Frame.InputBegan:connect(function(input)
+   if input.UserInputType == Enum.UserInputType.MouseButton1 and input.UserInputState == Enum.UserInputState.Begin then -- left mouse button down
+--       -- assert(isCurrentPosValid,"Invalid position.")
+--       -- for i,gridPos in ipairs(activeFrames) do
+--       --    gridPos[2] = Color3.new(.05,.05,.05)
+--       --    gridPos[1].BackgroundColor3 = gridPos[2]
+--       --    gridPos[3] = 1
+--       -- end
+      placePiece()
+      print("JigsawPuzzle: Left click")
+   elseif input.UserInputType == Enum.UserInputType.MouseButton2 and input.UserInputState == Enum.UserInputState.Begin then -- Right mouse button down
+--    --    currentRotation = currentRotation + 1
+--    --    if currentRotation > #currentPiece then 
+--    --       currentRotation = 1
+--    --    end
+--    --    movePiece()
+--    -- end
+      -- print("JigsawPuzzle: Right click")
+      rotatePiece()
+   end
+end)
+
+game:GetService("UserInputService").InputBegan:Connect(function (Input, GameProcessed)
+   if Input.UserInputType == Enum.UserInputType.Keyboard then
+      if Input.KeyCode == Enum.KeyCode.R then
+         rotatePiece()
+      end
+   end
+end)
+
+
+
+
+
+
 Frame.MouseLeave:connect(function()
    if currentPiece then
       currentPiece.Label.Parent = nil
@@ -180,7 +290,8 @@ Frame.MouseLeave:connect(function()
 end)
 
 Buttons.Straight.MouseButton1Click:connect(function() 
-   equipPiece(pieces.StraightPipe)
+   referencePiece = pieces.StraightPipe
+   equipPiece()
 end)
 
 -- This delay is a hack to allow the Gui to load before resizing it.
