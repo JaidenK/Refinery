@@ -1,7 +1,11 @@
 local pieces = {
-   t = {
-      {{1,0},{1,1},{1,2},{2,1}},
-      {{0,1},{1,1},{2,1},{1,0}}
+   StraightPipe = {
+      cost = 10,
+      Label = script.StraightPipe,
+      inputs = {
+         {-1,0}, -- left
+         {1,0} -- right
+      }
    }
 }
 return pieces
