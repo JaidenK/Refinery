@@ -21,8 +21,8 @@ local isCurrentPosValid = true
 
 local Graph = {}
 
-local MAX_WIDTH = 10
-local MAX_HEIGHT = 5
+local MAX_WIDTH = 20
+local MAX_HEIGHT = 15
 
 function buildGrid()
    -- Figure out the aspect ratio and scaling factors. The entire window
@@ -176,7 +176,7 @@ function equipPiece()
    currentPiece.neighbors = {}
    if currentRotation > 0 then
       for i=1,currentRotation/90 do
-         rotatePiece()
+         rotatePiece(true)
       end
    end
 end
@@ -188,19 +188,25 @@ function unequipPiece()
    end
 end
 
-function rotatePiece()
-   if currentPiece and currentPiece.Label.Parent then
-      print("JigsawPuzzle: rotate piece")
+function rotatePiece(suppress)
+   if currentPiece then
+      -- print("JigsawPuzzle: rotate piece")
       -- Clockwise rotation
-      currentRotation = currentRotation + 90
+      if not suppress then 
+         currentRotation = currentRotation + 90 
+         if currentRotation >= 360 then
+            currentRotation = 0
+         end
+      end
       currentPiece.Label.Rotation = currentRotation
 
       local newInputs = {}
       for i,v in ipairs(currentPiece.inputs) do
-            -v[2],
-            v[1]
+         local newCoord = {
+            v[2],
+            -v[1]
          }
-         print("JigsawPuzzle: ("..v[1]..","..v[2]..") -> ("..newCoord[1]..","..newCoord[2]..")")
+         -- print("JigsawPuzzle: ("..v[1]..","..v[2]..") -> ("..newCoord[1]..","..newCoord[2]..")")
          newInputs[i] = newCoord
       end
       currentPiece.inputs = newInputs
@@ -230,6 +236,8 @@ function movePiece()
    end
 
 
+
+
    -- for i,gridPos in ipairs(activeFrames) do
    --    gridPos[1].BackgroundColor3 = gridPos[2]
    -- end
@@ -257,7 +265,7 @@ Frame.InputBegan:connect(function(input)
 --       --    gridPos[3] = 1
 --       -- end
       placePiece()
-      print("JigsawPuzzle: Left click")
+      -- print("JigsawPuzzle: Left click")
    elseif input.UserInputType == Enum.UserInputType.MouseButton2 and input.UserInputState == Enum.UserInputState.Begin then -- Right mouse button down
 --    --    currentRotation = currentRotation + 1
 --    --    if currentRotation > #currentPiece then 
@@ -292,6 +300,21 @@ end)
 Buttons.Straight.MouseButton1Click:connect(function() 
    referencePiece = pieces.StraightPipe
    equipPiece()
+end)
+Buttons.Angle.MouseButton1Click:connect(function() 
+   referencePiece = pieces.AnglePipe
+   equipPiece()
+end)
+Buttons.Tee.MouseButton1Click:connect(function() 
+   referencePiece = pieces.TPipe
+   equipPiece()
+end)
+Buttons.Quad.MouseButton1Click:connect(function() 
+   referencePiece = pieces.QuadPipe
+   equipPiece()
+end)
+Buttons.Close.MouseButton1Click:connect(function()
+   script.Parent.Enabled = false
 end)
 
 -- This delay is a hack to allow the Gui to load before resizing it.
