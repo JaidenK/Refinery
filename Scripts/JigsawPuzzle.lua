@@ -17,7 +17,7 @@ local currentRotation = 0
 local referencePiece = nil
 local currentPiece = nil -- pieces.StraightPipe
 local currentPos = {0,0}
-local isCurrentPosValid = true
+local isCurrentPosValid = false
 
 local Graph = {}
 
@@ -126,6 +126,7 @@ function placePiece()
    -- create the connection.
 
    if not currentPiece then return end
+   if not isCurrentPosValid then return end
 
    -- Warn if a piece already is here.
    local currGrid = getGrid()
@@ -210,6 +211,7 @@ function rotatePiece(suppress)
          newInputs[i] = newCoord
       end
       currentPiece.inputs = newInputs
+      movePiece()
    end
 end
 
@@ -233,6 +235,28 @@ function movePiece()
    if currentPiece then
       currentPiece.Label.Parent = getCurrCell()
       currentPiece.pos = currentPos
+
+      -- THIS WILL NEED TO CHANGE ONCE MULTI-CELL MACHINES ARE ADDED
+      isCurrentPosValid = true
+      local currGrid = getGrid()
+      for _,piece in ipairs(currGrid[4]) do
+         for _,inputA in ipairs(piece.inputs) do
+            for _,inputB in ipairs(currentPiece.inputs) do
+               if inputA[1] == inputB[1] and inputA[2] == inputB[2] then
+                  isCurrentPosValid = false
+                  break
+               end
+            end
+            if not isCurrentPosValid then break end
+         end
+         if not isCurrentPosValid then break end
+      end
+
+      if not isCurrentPosValid then
+         currentPiece.Label.ImageColor3 = Color3.new(1.0,0.2,0.2)
+      else
+         currentPiece.Label.ImageColor3 = Color3.new(1,1,1)
+      end
    end
 
 
