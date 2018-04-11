@@ -1,6 +1,8 @@
 local machines = require(script.Parent.Machines)
 local stats = {}
 local InsertIntoTycoonEvent = game.ReplicatedStorage:WaitForChild("InsertIntoTycoonEvent")
+local TycoonClaimedEvent = game.ReplicatedStorage:WaitForChild("TycoonClaimedEvent")
+
 
 -- Puts the variables and data in the player for their GUI to use
 function stats.giveVariables(sTab)
@@ -70,6 +72,7 @@ function stats.setOwner(Player, Part)
    table.insert(stats, sTab)
 
    -- Player.CharacterAdded:connect(stats.giveVariables) -- For when they respawn
+   TycoonClaimedEvent:FireClient(Player, sTab.TycoonModel, Part)
    stats.giveVariables(sTab)
 end
 function stats.updatePlayerVariables() 

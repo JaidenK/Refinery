@@ -3,6 +3,8 @@ local buyFuncs = require(script.Parent.BuyFuncs)
 local Tutorial = require(script.Parent.Tutorial)
 local stats    = require(script.Parent.Stats)
 
+local TycoonClaimEvent = game.ReplicatedStorage.TycoonClaimEvent
+
 local debounce = false
 local debounceTime = 0.5
 -- Tests if the touching thing is a player/humanoid then runs the given
