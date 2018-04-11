@@ -1,6 +1,6 @@
 local machines = require(script.Parent.Machines)
 local stats = {}
-local InsertIntoTycoonEvent = game.ReplicatedStorage.InsertIntoTycoonEvent
+local InsertIntoTycoonEvent = game.ReplicatedStorage:WaitForChild("InsertIntoTycoonEvent")
 
 -- Puts the variables and data in the player for their GUI to use
 function stats.giveVariables(sTab)
@@ -112,11 +112,11 @@ function stats.putInTycoonModel(Player, model, TouchFunction, ClickFunction, isL
       local ModelClone = model:Clone()
       putInTycoonModelHelper(sTab, sTab.TycoonModel, ModelClone)
       if TouchFunction then
-         print("Connecting touch function.")
+         -- print("Connecting touch function.")
          ModelClone.TouchPart.Touched:connect(TouchFunction)
       end
       if ClickFunction then
-         print("Connecting click function")
+         -- print("Connecting click function")
          ModelClone.TouchPart.ClickDetector.MouseClick:connect(ClickFunction)
       end
    end
@@ -135,4 +135,5 @@ function stats.getSTab(Player)
    end
    return sTab
 end
+print("Stats: ready.")
 return stats

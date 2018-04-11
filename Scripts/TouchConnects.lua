@@ -37,29 +37,35 @@ function claimTycoon(Touched, claimModel)
          filterTouchEvent(Touched, buyFuncs.buyWalls, true)
       end, function()
          game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.Walls)
-      end)
+      end, true)
 
       -- Floor
       stats.putInTycoonModel(Player, machines.Floor[3], function(Touched)
          filterTouchEvent(Touched, buyFuncs.buyFloor, true)
-      end)
+      end, function()
+         game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.Floor)
+      end, true)
 
       -- Control Room
       stats.putInTycoonModel(Player, machines.ControlRoom[3], function(Touched)
          filterTouchEvent(Touched, buyFuncs.buyControlRoom, true)
-      end)
+      end, function()
+         game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.ControlRoom)
+      end, true)
 
       -- Gasoline Storage
       stats.putInTycoonModel(Player, machines.GasolineStorage[3], function(Touched)
          filterTouchEvent(Touched, buyFuncs.buyGasolineControls, true)
-      end)
+      end, function()
+         game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.GasolineStorage)
+      end, true)
 
       -- Crude Import
       stats.putInTycoonModel(Player, machines.CrudeImport[3], function(Touched)
          filterTouchEvent(Touched, buyFuncs.buyCrudeImport, true)
       end, function()
          game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.CrudeImport)
-      end)
+      end, true)
 
       Tutorial.giveTutorial(Player)
    end, true)
