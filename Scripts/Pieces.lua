@@ -6,7 +6,8 @@ local pieces = {
       inputs = { -- local coordinates Seems that x and y are flipped though.
          {0,1}, -- left
          {0,-1} -- right
-      }
+      },
+      product_id = 0
    },
    AnglePipe = {
       cost = 15,
@@ -14,7 +15,8 @@ local pieces = {
       inputs = {
          {0,1},
          {-1,0}
-      }
+      },
+      product_id = 0
    },
    TPipe = {
       cost = 20,
@@ -23,7 +25,8 @@ local pieces = {
          {0,1},
          {1,0},
          {0,-1}
-      }
+      },
+      product_id = 0
    },
    QuadPipe = {
       cost = 25,
@@ -33,7 +36,8 @@ local pieces = {
          {0,-1},
          {1,0},
          {-1,0}
-      }
+      },
+      product_id = 0
    }
 }
 return pieces
