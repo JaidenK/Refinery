@@ -24,15 +24,13 @@ function filterTouchEvent(Touched, func, useDebounce)
 end
 
 
-
-
-workspace.ClaimTycoon1.Part.Touched:connect(function(Touched)
+function claimTycoon(Touched, claimModel)
    filterTouchEvent(Touched, function(Touched)
       local Player = game.Players:GetPlayerFromCharacter(Touched.Parent)
-      stats.setOwner(Player, workspace.ClaimTycoon1.Part)
-      workspace.ClaimTycoon1.Part.CanCollide = false
-      workspace.ClaimTycoon1.Part.Transparency = 1
-      workspace.ClaimTycoon1:WaitForChild("Claim Refinery").Name = Player.Name.."'s Refinery"
+      stats.setOwner(Player, claimModel.Part)
+      claimModel.Part.CanCollide = false
+      claimModel.Part.Transparency = 1
+      claimModel:WaitForChild("Claim Refinery").Name = Player.Name.."'s Refinery"
 
       -- Walls
       stats.putInTycoonModel(Player, machines.Walls[3], function(Touched)
@@ -65,6 +63,13 @@ workspace.ClaimTycoon1.Part.Touched:connect(function(Touched)
 
       Tutorial.giveTutorial(Player)
    end, true)
+end
+
+workspace.ClaimTycoon1.Part.Touched:connect(function(Touched)
+   claimTycoon(Touched, workspace.ClaimTycoon1)   
+end)
+workspace.ClaimTycoon2.Part.Touched:connect(function(Touched)
+   claimTycoon(Touched, workspace.ClaimTycoon2)   
 end)
 
 machines.AtmosDist[3].TouchPart.Touched:connect(function(Touched)
