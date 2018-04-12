@@ -5,6 +5,11 @@ local stats    = require(script.Parent.Stats)
 
 local TycoonClaimEvent = game.ReplicatedStorage.TycoonClaimEvent
 
+-- When inserting local parts, these will be used to tell the client
+-- what should be done with the part.
+local RED_BUTTON = 1 
+
+
 local debounce = false
 local debounceTime = 0.5
 -- Tests if the touching thing is a player/humanoid then runs the given
