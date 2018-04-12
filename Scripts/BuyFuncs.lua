@@ -9,7 +9,7 @@ function BuyMachineRF.OnServerInvoke(Player, machine)
    print("BuyFuncs: "..Player.Name.." trying to buy "..machine[2])
 
    -- Invoke the buy function for machine
-   return machine[8](Player)
+   return buyFuncs[machine[8]](Player)
 end
 
 -- may 14th: EE103 midterm

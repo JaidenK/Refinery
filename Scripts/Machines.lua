@@ -1,5 +1,3 @@
-local buyFuncs = require(script.Parent.BuyFuncs)
-
 local machines = {
    -- {
    --    cost,
@@ -13,7 +11,7 @@ local machines = {
    --       img width, 
    --       img height
    --    },
-   --    buyFunc
+   --    buyFuncName
    -- }
    AtmosDist = {
       500, 
@@ -161,7 +159,7 @@ local machines = {
       "wandering onto your property. This is the first tier of security "..
       "for your refinery.",
       nil,
-      buyFuncs.buyWalls
+      "buyWalls"
    },
 
    Floor = {
