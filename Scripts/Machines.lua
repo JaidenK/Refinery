@@ -21,7 +21,14 @@ local machines = {
       workspace.BuyAtmosDist, 
       workspace.AtmosDist, 
       nil, 
-      "Atmospheric distillation towers are where the crude is seperated into different fractions based on their boiling points. Boiling crude oil is pumped into the tower near the bottom, and it rises due to heat. As it rises, it cools, and different fractions will settle out due to their different boiling points. By placing many trays inside the tower, it's possible to capture these different fractions at various heights inside the tower. The fractions will be further processed into things like fuel, asphalt, lubricants, plastics, etc.", 
+      "Atmospheric distillation towers are where the crude is seperated "..
+      "into different fractions based on their boiling points. Boiling crude "..
+      "oil is pumped into the tower near the bottom, and it rises due to "..
+      "heat. As it rises, it cools, and different fractions will settle "..
+      "out due to their different boiling points. By placing many trays "..
+      "inside the tower, it's possible to capture these different fractions "..
+      "at various heights inside the tower. The fractions will be further "..
+      "processed into things like fuel, asphalt, lubricants, plastics, etc.", 
       {1581633081, 144, 265}
    },
 
@@ -108,7 +115,10 @@ local machines = {
       workspace.BuyCrudeImport,
       workspace.CrudePipe,
       10,
-      "You've cut a deal with a nearby oil drilling company, and they're willing to send you a small amount of crude oil to get your refinery started. All you have to do is pay to set up the pipes and the crude will start flowing.",
+      "You've cut a deal with a nearby oil drilling company, and they're "..
+      "willing to send you a small amount of crude oil to get your refinery "..
+      "started. All you have to do is pay to set up the pipes and the crude "..
+      "will start flowing.",
       {1581752829, 200, 200}
    },
 
@@ -117,7 +127,12 @@ local machines = {
       100,
       "Control Room",
       workspace.BuyControlRoom,
-      workspace.ControlRoom
+      workspace.ControlRoom,
+      nil,
+      "A control room gives you access to production statistics and advanced "..
+      "management controls. Currently you're constantly selling your product "..
+      "for whatever people are buying it for, but with this admin building "..
+      "you can monitor prices and storage."
    },
 
    GasolineControls = {
@@ -131,7 +146,8 @@ local machines = {
       100,
       "Market Controls",
       workspace.BuyMarketControls,
-      workspace.MarketControls
+      workspace.MarketControls,
+      nil
    },
 
    
@@ -141,14 +157,20 @@ local machines = {
       workspace.BuyWalls,
       workspace.Walls,
       nil,
-      "Walls surround your refinery and prevent people from accidentally wandering onto your property. This is the first tier of security for your refinery."
+      "Walls surround your refinery and prevent people from accidentally "..
+      "wandering onto your property. This is the first tier of security "..
+      "for your refinery."
    },
 
    Floor = {
       100,
       "Floor",
       workspace.BuyFloor,
-      workspace.FloorConcrete
+      workspace.FloorConcrete,
+      nil,
+      "The refinery is currently built on a plot of dirt. Paving the property "..
+      "with concrete will make the place look cleaner and reduce maintanence "..
+      "costs on the machines."
    }
 }
 return machines

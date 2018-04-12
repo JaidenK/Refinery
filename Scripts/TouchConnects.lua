@@ -50,16 +50,12 @@ function claimTycoon(Touched, claimModel)
 
       -- Walls
       insertRedButton(Player, machines.Walls)
-
       -- Floor
       insertRedButton(Player, machines.Floor)
-
       -- Control Room
       insertRedButton(Player, machines.ControlRoom)
-
       -- Gasoline Storage
       insertRedButton(Player, machines.GasolineStorage)
-
       -- Crude Import
       insertRedButton(Player, machines.CrudeImport)
 
