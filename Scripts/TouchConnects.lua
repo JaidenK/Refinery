@@ -3,7 +3,7 @@ local buyFuncs = require(script.Parent.BuyFuncs)
 local Tutorial = require(script.Parent.Tutorial)
 local stats    = require(script.Parent.Stats)
 
-local TycoonClaimEvent = game.ReplicatedStorage.TycoonClaimEvent
+local TycoonClaimEvent = game.ReplicatedStorage:WaitForChild("TycoonClaimedEvent")
 
 -- When inserting local parts, these will be used to tell the client
 -- what should be done with the part.
@@ -30,6 +30,15 @@ function filterTouchEvent(Touched, func, useDebounce)
    end
 end
 
+function insertRedButton(Player, machine)
+   stats.putInTycoonModel(
+      Player, 
+      machine[3], 
+      RED_BUTTON,
+      machine,
+      true
+   )
+end
 
 function claimTycoon(Touched, claimModel)
    filterTouchEvent(Touched, function(Touched)
@@ -40,39 +49,19 @@ function claimTycoon(Touched, claimModel)
       claimModel:WaitForChild("Claim Refinery").Name = Player.Name.."'s Refinery"
 
       -- Walls
-      stats.putInTycoonModel(Player, machines.Walls[3], function(Touched)
-         filterTouchEvent(Touched, buyFuncs.buyWalls, true)
-      end, function()
-         game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.Walls)
-      end, true)
+      insertRedButton(Player, machines.Walls)
 
       -- Floor
-      stats.putInTycoonModel(Player, machines.Floor[3], function(Touched)
-         filterTouchEvent(Touched, buyFuncs.buyFloor, true)
-      end, function()
-         game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.Floor)
-      end, true)
+      insertRedButton(Player, machines.Floor)
 
       -- Control Room
-      stats.putInTycoonModel(Player, machines.ControlRoom[3], function(Touched)
-         filterTouchEvent(Touched, buyFuncs.buyControlRoom, true)
-      end, function()
-         game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.ControlRoom)
-      end, true)
+      insertRedButton(Player, machines.ControlRoom)
 
       -- Gasoline Storage
-      stats.putInTycoonModel(Player, machines.GasolineStorage[3], function(Touched)
-         filterTouchEvent(Touched, buyFuncs.buyGasolineControls, true)
-      end, function()
-         game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.GasolineStorage)
-      end, true)
+      insertRedButton(Player, machines.GasolineStorage)
 
       -- Crude Import
-      stats.putInTycoonModel(Player, machines.CrudeImport[3], function(Touched)
-         filterTouchEvent(Touched, buyFuncs.buyCrudeImport, true)
-      end, function()
-         game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.CrudeImport)
-      end, true)
+      insertRedButton(Player, machines.CrudeImport)
 
       Tutorial.giveTutorial(Player)
    end, true)

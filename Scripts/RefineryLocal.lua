@@ -1,6 +1,17 @@
 local InsertIntoTycoonEvent = game.ReplicatedStorage:WaitForChild("InsertIntoTycoonEvent")
 -- local GetTycoonModelRemoteFunction = nil
 local TycoonClaimedEvent = game.ReplicatedStorage:WaitForChild("TycoonClaimedEvent")
+local MachineInfoEvent = game.ReplicatedStorage:WaitForChild("MachineInfoEvent")
+local ItemDescriptionEvent = game.ReplicatedStorage:WaitForChild("ItemDescriptionEvent")
+
+-- The insertion types. These should be the same codes as in touch
+-- connects and buy funcs.
+local RED_BUTTON = 1
+
+-- The same table that the server uses. Given by server when player
+-- spawns.
+local machines = nil 
+local x = 1
 local TycoonModel = nil
 local TycoonModelRefPart = nil
 local Player = game.Players.LocalPlayer
@@ -37,15 +48,23 @@ function putInTycoonModelHelper(Parent, Model)
       Model.CFrame = There.CFrame:toWorldSpace(ObjSpaceCFrame)
    end
 end
-InsertIntoTycoonEvent.OnClientEvent:connect(function(Model, TouchFunction, ClickFunction)
+InsertIntoTycoonEvent.OnClientEvent:connect(function(Model, insertType, machine)
    if not TycoonModel then
       warn("RefineryLocal: Trying to insert into TycoonModel before it exists.")
       repeat wait(1) until TycoonModel
    end
 
+   print("RefineryLocal: Buying "..machine[2])
 
    local ModelClone = Model:Clone()
    putInTycoonModelHelper(TycoonModel, ModelClone)
+   if insertType == RED_BUTTON then
+      ModelClone.TouchPart.ClickDetector.MouseClick:connect(function()
+         ItemDescriptionEvent:FireClient(Player, machine)
+      end)
+   else
+      warn("RefineryLocal: Unknown insertType "..insertType)
+   end
    -- if TouchFunction then
    --    -- print("Connecting touch function.")
    --    ModelClone.TouchPart.Touched:connect(TouchFunction)
@@ -55,4 +74,9 @@ InsertIntoTycoonEvent.OnClientEvent:connect(function(Model, TouchFunction, Click
    --    ModelClone.TouchPart.ClickDetector.MouseClick:connect(ClickFunction)
    -- end
 end)
+MachineInfoEvent.OnClientEvent:connect(function(machines_in)
+   print("RefineryLocal: Received machines table.")
+   machines = machines_in
+end)
+
 print("RefineryLocal: ready.")

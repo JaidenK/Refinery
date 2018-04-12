@@ -29,6 +29,8 @@ Each node determines which parts are shown or hidden.
 local stats = require(script.Stats)
 local machines = require(script.Machines)
 
+local MachineInfoEvent = game.ReplicatedStorage:WaitForChild("MachineInfoEvent")
+
 -- Assigns the proper prices to each machine's buy button and hides the
 -- machine itself
 for _,machine in pairs(machines) do
@@ -38,6 +40,20 @@ for _,machine in pairs(machines) do
 end
 
 require(script.TouchConnects)
+
+-- When a player is respawns, I need to tell them what the details of
+-- the machines are. This is used for identifying what machines are
+-- being bought by server events and such. I have to create an event for
+-- when a player is added, so that I can connect to their spawn event.
+game.Players.PlayerAdded:connect(function(Player)
+   print("Refinery: Player added: "..Player.Name)
+   Player.CharacterAdded:connect(function(Model)
+      print("Refinery: CharacterAdded for player "..Player.Name)
+      MachineInfoEvent:FireClient(Player, machines)
+   end)
+end)
+
+
 
 while(wait(1))do
    for _,sTab in ipairs(stats) do
