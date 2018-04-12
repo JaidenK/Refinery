@@ -3,6 +3,12 @@ local stats = require(script.Parent.Stats)
 local machines = require(script.Parent.Machines)
 local Tutorial = require(script.Parent.Tutorial)
 
+local BuyMachineRF = game.ReplicatedStorage:WaitForChild("BuyMachineRF")
+
+function BuyMachineRF.OnServerInvoke(Player, machine)
+   print("BuyFuncs: "..Player.Name.." trying to buy "..machine[2])
+end
+
 -- Copied from TouchConnects
 local debounce = false
 local debounceTime = 0.5

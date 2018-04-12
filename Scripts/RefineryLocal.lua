@@ -3,6 +3,7 @@ local InsertIntoTycoonEvent = game.ReplicatedStorage:WaitForChild("InsertIntoTyc
 local TycoonClaimedEvent = game.ReplicatedStorage:WaitForChild("TycoonClaimedEvent")
 local MachineInfoEvent = game.ReplicatedStorage:WaitForChild("MachineInfoEvent")
 local ItemDescriptionEvent = game.ReplicatedStorage:WaitForChild("ItemDescriptionEvent")
+local BuyMachineRF = game.ReplicatedStorage:WaitForChild("BuyMachineRF")
 
 -- The insertion types. These should be the same codes as in touch
 -- connects and buy funcs.
@@ -15,6 +16,31 @@ local x = 1
 local TycoonModel = nil
 local TycoonModelRefPart = nil
 local Player = game.Players.LocalPlayer
+
+
+local debounce = false
+local debounceTime = 1
+-- Tests if the touching thing is a player/humanoid then runs the given
+-- function.
+function filterTouchEvent(Touched, func, useDebounce)
+   if Touched.Parent:FindFirstChild("Humanoid") then
+      if useDebounce then
+         if debounce then return end
+         debounce = true
+      end
+      -- commented out because it was hiding errors that I needed to see
+      -- while debugging. 
+      -- ypcall(function()
+         func(Touched)
+      -- end)
+      if useDebounce then
+         wait(debounceTime)
+         debounce = false
+      end
+   end
+end
+
+
 
 
 -- Fired in TouchConnects when the player walks into the claim part
@@ -54,11 +80,21 @@ InsertIntoTycoonEvent.OnClientEvent:connect(function(Model, insertType, machine)
       repeat wait(1) until TycoonModel
    end
 
-   print("RefineryLocal: Buying "..machine[2])
+   print("RefineryLocal: Inserting "..machine[2])
 
    local ModelClone = Model:Clone()
    putInTycoonModelHelper(TycoonModel, ModelClone)
+
    if insertType == RED_BUTTON then
+
+      ModelClone.TouchPart.Touched:connect(function(Touched)
+         filterTouchEvent(Touched, 
+            function()
+               BuyMachineRF:InvokeServer(machine)
+            end, 
+            true
+         )
+      end)
       ModelClone.TouchPart.ClickDetector.MouseClick:connect(function()
          ItemDescriptionEvent:FireClient(Player, machine)
       end)
