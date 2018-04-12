@@ -7,7 +7,12 @@ local BuyMachineRF = game.ReplicatedStorage:WaitForChild("BuyMachineRF")
 
 function BuyMachineRF.OnServerInvoke(Player, machine)
    print("BuyFuncs: "..Player.Name.." trying to buy "..machine[2])
+
+   -- Invoke the buy function for machine
+   return machine[8](Player)
 end
+
+-- may 14th: EE103 midterm
 
 -- Copied from TouchConnects
 local debounce = false
@@ -35,17 +40,20 @@ function getPlayerFromTouched(Touched)
 end
 
 
-function standardBuy(Touched, machine, product)
-   local Player = getPlayerFromTouched(Touched)
+function standardBuy(Player, machine, product)
    assert(stats.spendCash(Player, machine[1]))
    local sTab = stats.getSTab(Player)
-   sTab.TycoonModel[machine[3].Name]:Destroy()
    stats.putInTycoonModel(Player, machine[4])
    if product then
       sTab.production[product] = sTab.production[product] + machine[5]
       stats.updatePlayerVariables()
    end
-   return Player, sTab
+   -- The callback func being return here will be passed back through
+   -- the stack and ultimately executed by RefineryLocal after the
+   -- purchase goes through.
+   return Player, sTab, function(TycoonModel, machine)
+      TycoonModel[machine[3].Name]:Destroy()
+   end
 end
 function standardInsert(Touched, machineName)
    local Player = getPlayerFromTouched(Touched)
@@ -158,8 +166,9 @@ function buyFuncs.buyMarketControls(Touched)
    standardBuy(Touched, machines.MarketControls)
 end
 
-function buyFuncs.buyWalls(Touched)
-   standardBuy(Touched, machines.Walls)
+function buyFuncs.buyWalls(Player)
+   local Player, sTab, func = standardBuy(Player, machines.Walls)
+   return func
 end
 function buyFuncs.buyFloor(Touched)
    standardBuy(Touched, machines.Floor)

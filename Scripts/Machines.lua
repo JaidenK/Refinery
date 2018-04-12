@@ -1,10 +1,9 @@
+local buyFuncs = require(script.Parent.BuyFuncs)
 
 local machines = {
    -- {
    --    cost,
-
    --    full name,
-
    --    buy brick, 
    --    machine model, 
    --    production increase, 
@@ -13,7 +12,8 @@ local machines = {
    --       desc. img. id, 
    --       img width, 
    --       img height
-   --    }
+   --    },
+   --    buyFunc
    -- }
    AtmosDist = {
       500, 
@@ -159,7 +159,9 @@ local machines = {
       nil,
       "Walls surround your refinery and prevent people from accidentally "..
       "wandering onto your property. This is the first tier of security "..
-      "for your refinery."
+      "for your refinery.",
+      nil,
+      buyFuncs.buyWalls
    },
 
    Floor = {
@@ -173,4 +175,5 @@ local machines = {
       "costs on the machines."
    }
 }
+print("Machines: ready.")
 return machines

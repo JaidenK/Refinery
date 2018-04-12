@@ -90,7 +90,11 @@ InsertIntoTycoonEvent.OnClientEvent:connect(function(Model, insertType, machine)
       ModelClone.TouchPart.Touched:connect(function(Touched)
          filterTouchEvent(Touched, 
             function()
-               BuyMachineRF:InvokeServer(machine)
+               -- This calls the remote function with the argument
+               -- machine, but the remote function returns a callback.
+               -- The callback is then called with the arguments
+               -- TycoonModel and machine.
+               BuyMachineRF:InvokeServer(machine)(TycoonModel, machine)
             end, 
             true
          )

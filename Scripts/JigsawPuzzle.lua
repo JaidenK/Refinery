@@ -63,8 +63,8 @@ function buildGrid()
       local numButtons = #script.Parent.Frame.ButtonFrame:GetChildren()
       local minimumWidth = (numButtons+1) * marginBetweenButtons -- width of all margins
                            + numButtons * buttonWidth -- width of all buttons
-      print("numButtons",numButtons)
-      print("minimumWidth",minimumWidth)
+      -- print("numButtons",numButtons)
+      -- print("minimumWidth",minimumWidth)
 
       local desiredWidth = AbsSize.Y * gridRatio + margin.X
       
@@ -88,8 +88,8 @@ function buildGrid()
    local cellSize = AbsSize.Y/MAX_HEIGHT
    gridRef.Size = UDim2.new(0,cellSize,0,cellSize)
 
-   print("containerRatio",containerRatio)
-   print("gridRatio",gridRatio)
+   -- print("containerRatio",containerRatio)
+   -- print("gridRatio",gridRatio)
 
    -- ImgLabel.Size = UDim2.new(0,machine[7][2]*scale,0,machine[7][3]*scale)
    -- ImgLabel.Position = UDim2.new(0.5,-machine[7][2]*scale/2,0.5,-machine[7][3]*scale/2)
