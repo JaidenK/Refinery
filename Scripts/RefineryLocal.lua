@@ -63,7 +63,7 @@ function putInTycoonModelHelper(Parent, Model)
    -- Reposition the model if it's actually a part. Hopefully these
    -- three are all the parts that I'll be using. Wedge part or special
    -- mesh etc might exist, but I doubt I'll use them.
-   if Model:IsA("Part") or Model:IsA("MeshPart") or Model:IsA("UnionOperation") then
+   if Model:IsA("Part") or Model:IsA("MeshPart") or Model:IsA("UnionOperation") or Model:IsA("TrussPart") then
       -- Our tycoon.
       local There = TycoonModelRefPart
       -- The reference tycoon.
@@ -94,8 +94,7 @@ InsertIntoTycoonEvent.OnClientEvent:connect(function(Model, insertType, machine)
                -- machine, but the remote function returns a callback.
                -- The callback is then called with the arguments
                -- TycoonModel and machine.
-               local callback = BuyMachineRF:InvokeServer(machine)
-               callback(TycoonModel, machine)
+               BuyMachineRF:InvokeServer(TycoonModel, machine)
             end, 
             true
          )

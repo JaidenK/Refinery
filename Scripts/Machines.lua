@@ -13,6 +13,20 @@ local machines = {
    --    },
    --    buyFuncName
    -- }
+
+   CrudeImport = {
+      100,
+      "Crude Import",
+      workspace.BuyCrudeImport,
+      workspace.CrudePipe,
+      10,
+      "You've cut a deal with a nearby oil drilling company, and they're "..
+      "willing to send you a small amount of crude oil to get your refinery "..
+      "started. All you have to do is pay to set up the pipes and the crude "..
+      "will start flowing.",
+      {1581752829, 200, 200},
+      "buyCrudeImport"
+   },
    AtmosDist = {
       500, 
       "Atmospheric Distillation", 
@@ -27,7 +41,20 @@ local machines = {
       "inside the tower, it's possible to capture these different fractions "..
       "at various heights inside the tower. The fractions will be further "..
       "processed into things like fuel, asphalt, lubricants, plastics, etc.", 
-      {1581633081, 144, 265}
+      {1581633081, 144, 265},
+      "buyAtmosDist"
+   },
+
+   
+   Asphalt = {
+      100,
+      "Asphalt Processing",
+      workspace.BuyAsphalt,
+      workspace.AsphaltPipe,
+      1,
+      "",
+      nil,
+      "buyAsphalt"
    },
 
    HeavyNaphtha = {
@@ -80,16 +107,6 @@ local machines = {
    },
 
    
-   Asphalt = {
-      100,
-      "Asphalt Processing",
-      workspace.BuyAsphalt,
-      workspace.AsphaltPipe,
-      1,
-      ""
-   },
-
-   
    GasolineStorage = {
       100,
       "Gasoline Storage",
@@ -104,20 +121,10 @@ local machines = {
       "Truck Depot",
       workspace.BuyTruckDepot,
       workspace.TruckDepot,
-      10
-   },
-
-   CrudeImport = {
-      100,
-      "Crude Import",
-      workspace.BuyCrudeImport,
-      workspace.CrudePipe,
       10,
-      "You've cut a deal with a nearby oil drilling company, and they're "..
-      "willing to send you a small amount of crude oil to get your refinery "..
-      "started. All you have to do is pay to set up the pipes and the crude "..
-      "will start flowing.",
-      {1581752829, 200, 200}
+      "",
+      nil,
+      "buyTruckDepot"
    },
 
    
@@ -170,7 +177,9 @@ local machines = {
       nil,
       "The refinery is currently built on a plot of dirt. Paving the property "..
       "with concrete will make the place look cleaner and reduce maintanence "..
-      "costs on the machines."
+      "costs on the machines.",
+      nil,
+      "BuyFloor"
    }
 }
 print("Machines: ready.")

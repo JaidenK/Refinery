@@ -5,18 +5,17 @@ local Tutorial = require(script.Parent.Tutorial)
 
 local BuyMachineRF = game.ReplicatedStorage:WaitForChild("BuyMachineRF")
 
-function BuyMachineRF.OnServerInvoke(Player, machine)
+function BuyMachineRF.OnServerInvoke(Player, TycoonModel, machine)
    print("BuyFuncs: "..Player.Name.." trying to buy "..machine[2])
 
    -- Invoke the buy function for machine
-   return buyFuncs[machine[8]](Player)
+   buyFuncs[machine[8]](Player)(TycoonModel, machine)
 end
-
--- may 14th: EE103 midterm
 
 -- Copied from TouchConnects
 local debounce = false
 local debounceTime = 0.5
+local RED_BUTTON = 1
 -- Tests if the touching thing is a player/humanoid then runs the given
 -- function.
 function filterTouchEvent(Touched, func, useDebounce)
@@ -33,6 +32,16 @@ function filterTouchEvent(Touched, func, useDebounce)
          debounce = false
       end
    end
+end
+
+function insertRedButton(Player, machine)
+   stats.putInTycoonModel(
+      Player, 
+      machine[3], 
+      RED_BUTTON,
+      machine,
+      true
+   )
 end
 
 function getPlayerFromTouched(Touched)
@@ -52,13 +61,12 @@ function standardBuy(Player, machine, product)
    -- the stack and ultimately executed by RefineryLocal after the
    -- purchase goes through.
    return Player, sTab, function(TycoonModel, machine)
-      -- print("BuyFuncs: callback: "..TycoonModel[machine[3].Name].Name)
+      print("BuyFuncs: callback: "..TycoonModel[machine[3].Name].Name)
       TycoonModel[machine[3].Name]:Destroy()
-      -- print("CALLBACK")
+      print("CALLBACK")
    end
 end
-function standardInsert(Touched, machineName)
-   local Player = getPlayerFromTouched(Touched)
+function standardInsert(Player, machineName)
    stats.putInTycoonModel(Player, machines[machineName][3], function(Touched)
       filterTouchEvent(Touched, buyFuncs["buy"..machineName], true)
    end, function()
@@ -66,59 +74,50 @@ function standardInsert(Touched, machineName)
    end)
 end
 
-function buyFuncs.buyAtmosDist(Touched)
-   standardBuy(Touched, machines.AtmosDist)
+function buyFuncs.buyAtmosDist(Player)
+   local Player, sTab, func = standardBuy(Player, machines.AtmosDist)
 
    --machines.HeavyNaphtha[3].Parent = stats.TycoonModel
    --machines.LightNaphtha[3].Parent = stats.TycoonModel
 
-   local Player = getPlayerFromTouched(Touched)
-   stats.putInTycoonModel(Player, machines.Asphalt[3], function(Touched)
-      filterTouchEvent(Touched, buyFuncs.buyAsphalt, true)
-   end, function()
-      game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.Asphalt)
-   end)
-   Tutorial.boughtAtmosDist(getPlayerFromTouched(Touched))
 
+   insertRedButton(Player, machines.Asphalt)
+   Tutorial.boughtAtmosDist(Player)
+   return func
 end
 
 function buyFuncs.buyHeavyNaphtha(Touched)
-   standardBuy(Touched, machines.HeavyNaphtha,"gasoline")
+   standardBuy(Touched, machines.HeavyNaphtha,"Gasoline")
 
    machines.HNHydrotreater[3].Parent = stats.TycoonModel
    machines.HNCatalyticReformer[3].Parent = stats.TycoonModel
 end
 function buyFuncs.buyHNHydrotreater(Touched)
-   standardBuy(Touched, machines.HNHydrotreater,"gasoline")
+   standardBuy(Touched, machines.HNHydrotreater,"Gasoline")
 end
 function buyFuncs.buyHNCatalyticReformer(Touched)
-   standardBuy(Touched, machines.HNCatalyticReformer,"gasoline")
+   standardBuy(Touched, machines.HNCatalyticReformer,"Gasoline")
 end
 
 function buyFuncs.buyLightNaphtha(Touched)
-   standardBuy(Touched, machines.LightNaphtha,"gasoline")
+   standardBuy(Touched, machines.LightNaphtha,"Gasoline")
 
    machines.LNHydrotreater[3].Parent = stats.TycoonModel
    machines.LNIsoPlant[3].Parent = stats.TycoonModel
 end
 function buyFuncs.buyLNHydrotreater(Touched)
-   standardBuy(Touched, machines.LNHydrotreater,"gasoline")
+   standardBuy(Touched, machines.LNHydrotreater,"Gasoline")
 end
 function buyFuncs.buyLNIsoPlant(Touched)
-   standardBuy(Touched, machines.LNIsoPlant,"gasoline")
+   standardBuy(Touched, machines.LNIsoPlant,"Gasoline")
 end
 
-function buyFuncs.buyAsphalt(Touched)
-   standardBuy(Touched, machines.Asphalt,"asphalt")
+function buyFuncs.buyAsphalt(Player)
+   local Player, sTab, func = standardBuy(Player, machines.Asphalt, "Asphalt")
 
-   
-   local Player = getPlayerFromTouched(Touched)
-   stats.putInTycoonModel(Player, machines.TruckDepot[3], function(Touched)
-      filterTouchEvent(Touched, buyFuncs.buyTruckDepot, true)
-   end, function()
-      game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.TruckDepot)
-   end)
-   Tutorial.boughtAsphalt(getPlayerFromTouched(Touched))
+   insertRedButton(Player, machines.TruckDepot)
+   Tutorial.boughtAsphalt(Player)
+   return func
 end
 
 function buyFuncs.buyGasolineStorage(Touched)
@@ -129,30 +128,30 @@ function buyFuncs.buyGasolineStorage(Touched)
    --machines.GasolineStorage[3].Parent = stats.TycoonModel
 end
 
-function buyFuncs.buyTruckDepot(Touched)
-   standardBuy(Touched, machines.TruckDepot)
-   local sTab = stats.getSTab(getPlayerFromTouched(Touched))
+function buyFuncs.buyTruckDepot(Player)
+   local Player, sTab, func = standardBuy(Player, machines.TruckDepot)
    sTab.export = sTab.export + machines.TruckDepot[5]
    stats.updatePlayerVariables()
 
-   Tutorial.boughtTruckDepot(getPlayerFromTouched(Touched))
+   Tutorial.boughtTruckDepot(Player)
    --machines.TruckDepot[3].Parent = stats.TycoonModel
-
+   return func
 end
 
-function buyFuncs.buyCrudeImport(Touched)
-   local Player, sTab = standardBuy(Touched, machines.CrudeImport)
+function buyFuncs.buyCrudeImport(Player)
+   local Player, sTab, func = standardBuy(Player, machines.CrudeImport)
    sTab.import = sTab.import + machines.CrudeImport[5]
    stats.updatePlayerVariables()
 
-
-   standardInsert(Touched, "AtmosDist")
+   print("Buying crude import")
+   insertRedButton(Player, machines.AtmosDist)
    -- stats.putInTycoonModel(Player, machines.AtmosDist[3], function(Touched)
    --    filterTouchEvent(Touched, buyFuncs.buyAtmosDist, true)
    -- end, function()
    --    game.ReplicatedStorage.ItemDescriptionEvent:FireClient(Player, machines.AtmosDist)
    -- end)
-   Tutorial.boughtCrudeImport(getPlayerFromTouched(Touched))
+   Tutorial.boughtCrudeImport(Player)
+   return func
 end
 
 function buyFuncs.buyControlRoom(Touched)
@@ -172,7 +171,8 @@ function buyFuncs.buyWalls(Player)
    local Player, sTab, func = standardBuy(Player, machines.Walls)
    return func
 end
-function buyFuncs.buyFloor(Touched)
-   standardBuy(Touched, machines.Floor)
+function buyFuncs.buyFloor(Player)
+   local Player, sTab, func = standardBuy(Player, machines.Floor)
+   return func
 end
 return buyFuncs

@@ -31,6 +31,10 @@ local machines = require(script.Machines)
 
 local MachineInfoEvent = game.ReplicatedStorage:WaitForChild("MachineInfoEvent")
 
+
+
+
+
 -- Assigns the proper prices to each machine's buy button and hides the
 -- machine itself
 for _,machine in pairs(machines) do
@@ -56,9 +60,24 @@ end)
 
 
 while(wait(1))do
+   local totalCrudeUnits = 0
+   for _,NumberValue in ipairs(workspace.CrudeMixture:GetChildren()) do
+      totalCrudeUnits = totalCrudeUnits + NumberValue.Value
+   end
    for _,sTab in ipairs(stats) do
-      local gasolineProduced = math.min(sTab.import,sTab.production.gasoline,sTab.export)
-      sTab.cash = sTab.cash + workspace.MarketPrice.Gasoline.Value * gasolineProduced
+      for product, productValue in pairs(sTab.production) do
+         -- print("Payout: "..product.." "..productValue)
+         -- Percent of total crude import units that contains this
+         -- product.
+         local crudeFraction = workspace.CrudeMixture[product].Value / totalCrudeUnits
+         -- Number of units of this product being exported.
+         local productUnits = sTab.import * crudeFraction
+         -- Market price modified by player's product value.
+         local productSellingPrice = workspace.MarketPrice[product].Value * productValue
+         local finalExportCash = productUnits * productSellingPrice
+         sTab.cash = sTab.cash + finalExportCash
+         -- print("Cash: "..sTab.cash)
+      end
    end
    stats.updatePlayerVariables()
 end

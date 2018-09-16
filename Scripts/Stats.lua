@@ -3,7 +3,6 @@ local stats = {}
 local InsertIntoTycoonEvent = game.ReplicatedStorage:WaitForChild("InsertIntoTycoonEvent")
 local TycoonClaimedEvent = game.ReplicatedStorage:WaitForChild("TycoonClaimedEvent")
 
-
 -- Puts the variables and data in the player for their GUI to use
 function stats.giveVariables(sTab)
    local Folder = Instance.new("Folder")
@@ -59,15 +58,14 @@ function stats.setOwner(Player, Part)
    sTab.PlayerVariables = nil
 
    sTab.production = {
-      crude = 100,
-      gasoline = 0,
-      asphalt = 0
+      Gasoline = 0,
+      Asphalt = 0.5
    }
    sTab.storage = {
       gasoline = {stored = 0, max = 0}
    }
    sTab.export = 0
-   sTab.import = 0
+   sTab.import = 100
 
    table.insert(stats, sTab)
 
