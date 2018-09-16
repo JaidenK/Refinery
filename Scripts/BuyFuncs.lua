@@ -61,6 +61,11 @@ function standardBuy(Player, machine, product)
    -- the stack and ultimately executed by RefineryLocal after the
    -- purchase goes through.
    return Player, sTab, function(TycoonModel, machine)
+      print(TycoonModel)
+      print(#TycoonModel:GetChildren())
+      for k,v in pairs(TycoonModel:GetChildren()) do
+         print(v)
+      end
       print("BuyFuncs: callback: "..TycoonModel[machine[3].Name].Name)
       TycoonModel[machine[3].Name]:Destroy()
       print("CALLBACK")
