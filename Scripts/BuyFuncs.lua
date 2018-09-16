@@ -9,7 +9,10 @@ function BuyMachineRF.OnServerInvoke(Player, TycoonModel, machine)
    print("BuyFuncs: "..Player.Name.." trying to buy "..machine[2])
 
    -- Invoke the buy function for machine
-   buyFuncs[machine[8]](Player)(TycoonModel, machine)
+   local returnValue = buyFuncs[machine[8]](Player)
+   print("returnValue")
+   print(returnValue)
+   return returnValue
 end
 
 -- Copied from TouchConnects
@@ -60,16 +63,10 @@ function standardBuy(Player, machine, product)
    -- The callback func being return here will be passed back through
    -- the stack and ultimately executed by RefineryLocal after the
    -- purchase goes through.
-   return Player, sTab, function(TycoonModel, machine)
-      print(TycoonModel)
-      print(#TycoonModel:GetChildren())
-      for k,v in pairs(TycoonModel:GetChildren()) do
-         print(v)
-      end
-      print("BuyFuncs: callback: "..TycoonModel[machine[3].Name].Name)
-      TycoonModel[machine[3].Name]:Destroy()
-      print("CALLBACK")
-   end
+   return Player, sTab, {
+      "Destroy",
+      machine[3].Name
+   }
 end
 function standardInsert(Player, machineName)
    stats.putInTycoonModel(Player, machines[machineName][3], function(Touched)

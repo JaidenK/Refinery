@@ -94,7 +94,12 @@ InsertIntoTycoonEvent.OnClientEvent:connect(function(Model, insertType, machine)
                -- machine, but the remote function returns a callback.
                -- The callback is then called with the arguments
                -- TycoonModel and machine.
-               BuyMachineRF:InvokeServer(TycoonModel, machine)
+               local callbackInstruction = BuyMachineRF:InvokeServer(TycoonModel, machine)
+               if callbackInstruction[1] == "Destroy" then
+                  TycoonModel[callbackInstruction[2]]:Destroy()
+               else
+                  warn("Unkown callbackInstruction: "..callbackInstruction[1])
+               end
             end, 
             true
          )
